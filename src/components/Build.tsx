@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { projects, type Project } from '../data/content';
+import type { Project } from '../data/content';
+import { useLang } from '../i18n';
 import { Reveal } from './Reveal';
 
 function storyId(project: Project): string {
@@ -20,11 +21,12 @@ function Metrics({ project }: { project: Project }) {
 }
 
 function Story({ project, open, onToggle }: { project: Project; open: boolean; onToggle: () => void }) {
+  const { t } = useLang();
   const id = storyId(project);
   return (
     <>
       <button className="story-btn" aria-expanded={open} aria-controls={id} onClick={onToggle}>
-        {open ? 'Close the story ' : 'Read the story '}<span className="pl">+</span>
+        {open ? t.build.closeStory : t.build.readStory}<span className="pl">+</span>
       </button>
       <div id={id} className="steps">
         <div>
@@ -71,8 +73,8 @@ function ProjectCard({ project }: { project: Project }) {
         <p className="desc">{project.description}</p>
         <Metrics project={project} />
         <p className="stack">{project.stack}</p>
-        <Story project={project} open={open} onToggle={() => setOpen((value) => !value)} />
         <Links project={project} />
+        <Story project={project} open={open} onToggle={() => setOpen((value) => !value)} />
       </div>
     </Reveal>
   );
@@ -94,32 +96,33 @@ function MoreRow({ project }: { project: Project }) {
       </div>
       <div className="more-side">
         <Metrics project={project} />
-        <Story project={project} open={open} onToggle={() => setOpen((value) => !value)} />
         <Links project={project} />
+        <Story project={project} open={open} onToggle={() => setOpen((value) => !value)} />
       </div>
     </Reveal>
   );
 }
 
 export function Build() {
-  const featured = projects.filter((project) => project.featured);
-  const more = projects.filter((project) => !project.featured);
+  const { t, content } = useLang();
+  const featured = content.projects.filter((project) => project.featured);
+  const more = content.projects.filter((project) => !project.featured);
   return (
     <section className="build" id="build">
       <div className="wrap">
         <div className="build-head">
           <div>
-            <Reveal className="sh"><b>IV</b><span className="line"></span>What I build · The branches</Reveal>
-            <Reveal as="h2" className="h2">Ideas, <em>grown</em> into systems.</Reveal>
+            <Reveal className="sh"><b>IV</b><span className="line"></span>{t.build.head}</Reveal>
+            <Reveal as="h2" className="h2">{t.build.h2a}<em>{t.build.h2em}</em>{t.build.h2b}</Reveal>
           </div>
-          <Reveal as="p">Every project starts with a question. Here is what I set out to solve, how I built it, and what it taught me.</Reveal>
+          <Reveal as="p">{t.build.intro}</Reveal>
         </div>
         {featured.map((project) => (
           <ProjectCard key={project.title} project={project} />
         ))}
         {more.length > 0 ? (
           <div className="more">
-            <Reveal className="sh more-title"><span className="line"></span>More work</Reveal>
+            <Reveal className="sh more-title"><span className="line"></span>{t.build.more}</Reveal>
             {more.map((project) => (
               <MoreRow key={project.title} project={project} />
             ))}

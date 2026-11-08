@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { contact } from '../data/content';
+import { useLang } from '../i18n';
 import { Reveal } from './Reveal';
 
 export function Connect() {
+  const { t } = useLang();
+  const c = t.connect;
   const [message, setMessage] = useState<string | null>(null);
   const timer = useRef<number>(undefined);
   useEffect(() => () => window.clearTimeout(timer.current), []);
 
   async function copy() {
-    let text = 'Email copied';
+    let text = c.copied;
     try {
       await navigator.clipboard.writeText(contact.email);
     } catch {
@@ -22,21 +25,21 @@ export function Connect() {
   const socials = [
     { label: 'LinkedIn', url: contact.linkedin },
     { label: 'GitHub', url: contact.github },
-    { label: 'Résumé', url: contact.resume },
+    { label: c.resume, url: contact.resume },
   ].filter((item) => item.url !== '');
 
   return (
     <section className="connect" id="connect">
       <div className="wrap">
-        <Reveal className="sh"><b>VII</b><span className="line"></span>Let’s connect · The petals</Reveal>
-        <Reveal as="h2" className="h2">Let’s build something <em>beyond the ordinary.</em></Reveal>
-        <Reveal as="p" className="sub">Open to internships, research opportunities, collaborations and university admissions.</Reveal>
+        <Reveal className="sh"><b>VII</b><span className="line"></span>{c.head}</Reveal>
+        <Reveal as="h2" className="h2">{c.h2a}<em>{c.h2em}</em></Reveal>
+        <Reveal as="p" className="sub">{c.sub}</Reveal>
         <Reveal className="mail">
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
-          <button className="copy" onClick={copy}>Copy</button>
+          <button className="copy" onClick={copy}>{c.copy}</button>
         </Reveal>
         <Reveal as="p" className="small-caps school">
-          Student address: <a href={`mailto:${contact.schoolEmail}`}>{contact.schoolEmail}</a>
+          {c.student}<a href={`mailto:${contact.schoolEmail}`}>{contact.schoolEmail}</a>
         </Reveal>
         <Reveal className="socials">
           {socials.map((item) => (
@@ -46,10 +49,10 @@ export function Connect() {
       </div>
       <footer>
         <span className="sig">Stella Gbaguidi</span>
-        <span>Designed &amp; built by Stella · MMXXVI</span>
-        <a href="#hero" className="tlink">Back to the seed ↑</a>
+        <span>{c.made}</span>
+        <a href="#hero" className="tlink">{c.back}</a>
       </footer>
-      <div className={`toast${message ? ' show' : ''}`} role="status">{message ?? 'Email copied'}</div>
+      <div className={`toast${message ? ' show' : ''}`} role="status">{message ?? c.copied}</div>
     </section>
   );
 }

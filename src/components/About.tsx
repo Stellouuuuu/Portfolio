@@ -1,7 +1,10 @@
-import { facts, portrait } from '../data/content';
+import { portrait } from '../data/content';
+import { useLang } from '../i18n';
 import { Reveal } from './Reveal';
 
 export function About() {
+  const { t, content } = useLang();
+  const a = t.about;
   return (
     <section className="about" id="about">
       <div className="wrap about-grid">
@@ -14,26 +17,26 @@ export function About() {
               </svg>
             </div>
             {portrait ? (
-              <img className="portrait" src={portrait} alt="Portrait of Stella Gbaguidi" width={800} height={1040} loading="lazy" />
+              <img className="portrait" src={portrait} alt={a.portraitAlt} width={800} height={1040} loading="lazy" />
             ) : null}
             <figcaption>Stella Gbaguidi</figcaption>
           </figure>
-          <div className="note small-caps"><span>Portrait</span><span>MMXXVI</span></div>
+          <div className="note small-caps"><span>{a.portrait}</span><span>MMXXVI</span></div>
         </Reveal>
         <div className="about-text">
-          <Reveal className="sh"><b>II</b><span className="line"></span>Who am I · The roots</Reveal>
-          <Reveal as="h2" className="h2">A curious mind, <em>rooted</em> in building.</Reveal>
+          <Reveal className="sh"><b>II</b><span className="line"></span>{a.head}</Reveal>
+          <Reveal as="h2" className="h2">{a.h2a}<em>{a.h2em}</em>{a.h2z}</Reveal>
           <Reveal as="p" className="lead">
-            I’m Stella, a computer science student who believes code is one of the most elegant ways to turn an idea into something real.
+            {a.lead}
           </Reveal>
           <Reveal as="p" className="body">
-            I’m drawn to software engineering for its rigor, and to artificial intelligence for its possibilities. But what truly moves me is the moment a problem becomes a product: understanding what people need, designing the right solution, and building it until it works, beautifully.
+            {a.body1}
           </Reveal>
           <Reveal as="p" className="body">
-            Beyond the screen, I’m an entrepreneur at heart. I like to experiment, to start things, and to build with the ambition of creating something that lasts.
+            {a.body2}
           </Reveal>
           <Reveal as="dl" className="facts">
-            {facts.map((fact) => (
+            {content.facts.map((fact) => (
               <div key={fact.label}><dt>{fact.label}</dt><dd>{fact.value}</dd></div>
             ))}
           </Reveal>

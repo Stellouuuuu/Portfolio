@@ -1,12 +1,15 @@
 import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { App } from './App';
+import { LangProvider } from './i18n';
 import './styles.css';
 
 const root = document.getElementById('root')!;
 const app = (
   <StrictMode>
-    <App />
+    <LangProvider>
+      <App />
+    </LangProvider>
   </StrictMode>
 );
 

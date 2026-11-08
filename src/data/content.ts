@@ -162,6 +162,7 @@ export const projects: Project[] = [
     bloom: true,
     description: 'A shop management app to follow stock and sales, record sales offline, and prepare stock counts.',
     stack: 'Expo · React Native · Supabase · SQLite',
+    shot: { src: 'assets/img/boutique-home.png', alt: 'The home page of the Gestion de boutique web app: manage your shop, stock, sales and inventories from a phone' },
     letter: 'G',
     gradient: 'linear-gradient(160deg,#F6E3E4,#EBD3C9)',
     story: [

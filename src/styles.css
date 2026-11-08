@@ -325,3 +325,16 @@ footer .sig{font-size:20px;font-style:normal;letter-spacing:-.01em}
 .more-row.open .story-btn .pl{transform:rotate(45deg)}
 .more-row.open .steps{grid-template-rows:1fr}
 @media (max-width:960px){.more-row{grid-template-columns:1fr}}
+
+/* Project links as visible buttons */
+.links{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+.pi .links{gap:12px;margin-top:22px}
+.links .tlink{display:inline-flex;align-items:center;border:1px solid var(--choc);border-radius:999px;padding:10px 18px;color:var(--choc);border-bottom-width:1px;transition:background .3s var(--ease),color .3s var(--ease)}
+.links .tlink:hover{background:var(--choc);color:var(--ivory)}
+.pi .links+.story-btn,.more-side .links+.story-btn{margin-top:22px}
+
+/* Language switch */
+.nav .lang{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted);padding:6px 10px;border:1px solid rgba(59,42,34,.28);border-radius:999px;transition:border-color .3s var(--ease),color .3s var(--ease)}
+.nav .lang:hover{border-color:var(--choc);color:var(--choc)}
+.nav .lang .on{color:var(--choc);font-weight:500}
+.nav .lang .sep{opacity:.5}

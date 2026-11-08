@@ -1,43 +1,46 @@
+import { useLang } from '../i18n';
 import { Reveal } from './Reveal';
 
 export function Beyond() {
+  const { t } = useLang();
+  const b = t.beyond;
   return (
     <section id="beyond">
       <div className="wrap">
         <div className="beyond-head">
-          <Reveal className="sh"><b>V</b><span className="line"></span>Beyond code · The leaves</Reveal>
-          <Reveal as="h2" className="h2">More than <em>a developer.</em></Reveal>
-          <Reveal as="p">The ideas, the initiatives and the taste that shape the way I build.</Reveal>
+          <Reveal className="sh"><b>V</b><span className="line"></span>{b.head}</Reveal>
+          <Reveal as="h2" className="h2">{b.h2a}<em>{b.h2em}</em></Reveal>
+          <Reveal as="p">{b.intro}</Reveal>
         </div>
         <div className="mood">
           <Reveal className="tile t1">
-            <span className="tag-s">01 · Entrepreneurship</span>
-            <h4>Starting things.</h4>
-            <p>Learning by building, testing ideas in the real world, and turning them into projects that create value.</p>
+            <span className="tag-s">{b.t1[0]}</span>
+            <h4>{b.t1[1]}</h4>
+            <p>{b.t1[2]}</p>
           </Reveal>
           <Reveal className="tile t2" delay=".1s">
-            <blockquote>I like things that are built well: code, ideas, and lives.</blockquote>
+            <blockquote>{b.quote}</blockquote>
           </Reveal>
           <Reveal className="tile t3" delay=".15s">
-            <span className="tag-s">02 · Creativity</span>
-            <h4>The details.</h4>
-            <p>Design, aesthetics, and the care nobody asks for.</p>
+            <span className="tag-s">{b.t3[0]}</span>
+            <h4>{b.t3[1]}</h4>
+            <p>{b.t3[2]}</p>
           </Reveal>
           <Reveal className="tile t4" delay=".2s">
-            <span className="tag-s">03 · Currently</span>
-            <h4>On my desk</h4>
+            <span className="tag-s">{b.t4[0]}</span>
+            <h4>{b.t4[1]}</h4>
             <ul>
-              <li>Mnemo: vision, next</li>
-              <li>AegisAI: code analysis</li>
-              <li>A local model that resists injection</li>
+              {b.t4[2].map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
           </Reveal>
           <Reveal className="tile t5">
             <div>
-              <span className="small-caps">04 · Habit</span>
-              <h4>Writing down what failed</h4>
+              <span className="small-caps">{b.t5[0]}</span>
+              <h4>{b.t5[1]}</h4>
             </div>
-            <p>Every project keeps a journal of what did not work and what I learned from it. The failures are the useful part.</p>
+            <p>{b.t5[2]}</p>
           </Reveal>
         </div>
       </div>

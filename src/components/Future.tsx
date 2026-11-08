@@ -1,12 +1,14 @@
-import { futureColumns, path } from '../data/content';
+import { useLang } from '../i18n';
 import { Reveal } from './Reveal';
 
 export function Future() {
+  const { t, content } = useLang();
+  const { futureColumns, path } = content;
   return (
     <section className="future" id="future">
       <div className="wrap">
-        <Reveal className="sh"><b>VI</b><span className="line"></span>The future · The bloom</Reveal>
-        <Reveal as="p" className="big-quote">I’m not just building a career. I’m building a <em>vision.</em></Reveal>
+        <Reveal className="sh"><b>VI</b><span className="line"></span>{t.future.head}</Reveal>
+        <Reveal as="p" className="big-quote">{t.future.quoteA}<em>{t.future.quoteEm}</em></Reveal>
         <Reveal className="path">
           {path.map((node) => (
             <div key={node.title} className={`node ${node.state}`}>

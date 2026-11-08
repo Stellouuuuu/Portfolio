@@ -212,7 +212,7 @@ export const futureColumns = [
 ];
 
 /** Path of a portrait photo inside public/ (for example 'assets/img/portrait.jpg'). Empty shows the silhouette. */
-export const portrait = '';
+export const portrait = 'assets/img/portrait.jpg';
 
 export const contact = {
   email: 'stellagbaguidi68@gmail.com',

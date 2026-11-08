@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { futureColumns, mindItems, path, projects } from './data/content';
+import { futureColumns, mindItems, path, portrait, projects } from './data/content';
 import { factsFr, futureColumnsFr, mindItemsFr, pathFr, projectsFr } from './data/content.fr';
 import { facts } from './data/content';
 import { localize } from './i18n';
@@ -65,6 +65,15 @@ describe('Showcase pictures', () => {
       for (const figure of project.sample?.gallery ?? []) {
         expect(existsSync(resolve(publicDir, figure.src)), figure.src).toBe(true);
       }
+    }
+  });
+});
+
+describe('Portrait', () => {
+  it('points at a file that exists, when one is set', () => {
+    if (portrait) {
+      const publicDir = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'public');
+      expect(existsSync(resolve(publicDir, portrait))).toBe(true);
     }
   });
 });

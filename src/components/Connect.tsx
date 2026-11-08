@@ -35,6 +35,9 @@ export function Connect() {
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
           <button className="copy" onClick={copy}>Copy</button>
         </Reveal>
+        <Reveal as="p" className="small-caps school">
+          Student address: <a href={`mailto:${contact.schoolEmail}`}>{contact.schoolEmail}</a>
+        </Reveal>
         <Reveal className="socials">
           {socials.map((item) => (
             <a key={item.label} href={item.url} target="_blank" rel="noopener">{item.label} <span>↗</span></a>

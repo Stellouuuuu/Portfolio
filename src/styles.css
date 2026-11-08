@@ -262,3 +262,7 @@ footer .sig{font-family:var(--serif);font-style:italic;text-transform:none;lette
 .pi .links{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:26px}
 .stack{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.9;margin-bottom:26px;max-width:46ch}
 @media (max-width:960px){.pv .shot{inset:22px;width:calc(100% - 44px);height:calc(100% - 44px)}}
+
+.connect .school{margin:-24px 0 46px}
+.connect .school a{border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .4s}
+.connect .school a:hover{color:var(--rose)}

@@ -42,6 +42,13 @@ describe('project content', () => {
     }
   });
 
+  it('has valid contact details', () => {
+    for (const address of [content.contact.email, content.contact.schoolEmail]) {
+      expect(address).toMatch(/^[^@\s]+@[^@\s]+\.[^@\s]+$/);
+    }
+    expect(content.contact.linkedin.startsWith('https://www.linkedin.com/in/')).toBe(true);
+  });
+
   it('has a petal density and a label for every section', () => {
     for (const id of content.sections) {
       expect(content.petalDensity[id]).toBeGreaterThan(0);

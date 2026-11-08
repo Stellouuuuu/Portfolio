@@ -31,8 +31,8 @@ desktop and mobile widths, and less than 0.02 % of the pixels differ once motion
 ## To fill in
 
 - **Portrait:** put a photo at `public/assets/img/portrait.jpg` (about 4:5). Until then the page shows the silhouette.
-- **Email:** `hello@stellagbaguidi.com` is the address from the design. Change it in `src/data/content.ts` (`contact.email`) if it is not yours.
-- **LinkedIn and Résumé:** set `contact.linkedin` and `contact.resume` in `src/data/content.ts`. An empty value keeps the link hidden.
+- **Résumé:** set `contact.resume` in `src/data/content.ts`. An empty value keeps the link hidden.
+- **Contact details** (main and student email, LinkedIn, GitHub) are in `contact`, in the same file.
 - **Projects:** add or edit an object in `projects`. The test checks that every project has the five story steps in order, links over https, existing screenshots, and no em dash or emoji in the text.
 
 ## Design notes

@@ -155,10 +155,12 @@ export const futureColumns = [
 ];
 
 export const contact = {
-  email: 'hello@stellagbaguidi.com',
+  email: 'stellagbaguidi68@gmail.com',
+  /** Shown under the main address, for school and internship contacts. */
+  schoolEmail: 'stella.gbaguidi@epitech.eu',
   github: 'https://github.com/Stellouuuuu',
   /** Fill these in to show the links: an empty value keeps the link hidden. */
-  linkedin: '',
+  linkedin: 'https://www.linkedin.com/in/stella-gbaguidi-2424b7358/',
   resume: '',
 };
 

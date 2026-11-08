@@ -14,7 +14,7 @@ export function Beyond() {
         </div>
         <div className="mood">
           <Reveal className="tile t1">
-            <img className="tile-bg" src="assets/img/creative.jpg" alt="Hands typing on a laptop keyboard in a warmly lit room" loading="lazy" decoding="async" />
+            <img className="tile-bg" src="assets/img/entrepreneurship.jpg" alt="A hand moving over printed brochures and a laptop on a table, blurred by the motion" loading="lazy" decoding="async" />
             <span className="tag-s">{b.t1[0]}</span>
             <h4>{b.t1[1]}</h4>
             <p>{b.t1[2]}</p>
@@ -23,6 +23,7 @@ export function Beyond() {
             <blockquote>{b.quote}</blockquote>
           </Reveal>
           <Reveal className="tile t3" delay=".15s">
+            <img className="tile-bg" src="assets/img/creative.jpg" alt="Hands typing on a laptop keyboard in a warmly lit room" loading="lazy" decoding="async" />
             <span className="tag-s">{b.t3[0]}</span>
             <h4>{b.t3[1]}</h4>
             <p>{b.t3[2]}</p>

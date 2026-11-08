@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { contact, type SectionId } from '../data/content';
 import { useLang } from '../i18n';
 
-const ids = ['about', 'mind', 'build', 'beyond', 'future', 'connect'] as const satisfies readonly SectionId[];
+const ids = ['about', 'mind', 'experience', 'build', 'beyond', 'future', 'connect'] as const satisfies readonly SectionId[];
 
 export function Nav({ scrolled, active }: { scrolled: boolean; active: SectionId }) {
   const { lang, setLang, t } = useLang();

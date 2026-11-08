@@ -186,6 +186,45 @@ export const projects: Project[] = [
   },
 ];
 
+export interface Experience {
+  title: string;
+  /** Kind of contract, for example a work-study internship. */
+  type: string;
+  organisation: string;
+  place: string;
+  period: string;
+  bullets: string[];
+  stack: string;
+}
+
+export const experiences: Experience[] = [
+  {
+    title: 'Data Analyst Intern',
+    type: 'Work-study, 2 days a week',
+    organisation: 'Port Autonome de Cotonou (PAC)',
+    place: 'Cotonou, Benin',
+    period: '08/2026 – 11/2026',
+    bullets: [
+      'In a pair, built a prototype data platform for the port: daily ETL of ship calls, container movements and weather data, with quality checks and an anomaly report, orchestrated by Airflow into PostgreSQL.',
+      'My part: the React interface (activity and data-quality dashboard, executions, connectors, sharing, notifications) and FastAPI endpoints (JWT authentication, statistics, pipeline run and status).',
+      'Worked on synthetic data with deliberate anomalies, as the real sources were not yet available.',
+    ],
+    stack: 'Python · PySpark · Airflow · PostgreSQL · FastAPI · React · Docker',
+  },
+  {
+    title: 'Web Development Intern',
+    type: 'Internship',
+    organisation: 'ECOIA',
+    place: 'Calavi, Benin',
+    period: '06/2025 – 11/2025',
+    bullets: [
+      'Developed and maintained web applications for client projects, following the specifications, and integrated third-party APIs to extend existing applications.',
+      'Designed and modeled relational and non-relational databases, and set up unit and integration tests to make the delivered code more reliable.',
+    ],
+    stack: 'JavaScript · HTML · CSS · SQL · REST APIs',
+  },
+];
+
 export const mindItems = [
   { title: 'Software Engineering', text: 'Designing systems that are clear, robust and built to last.' },
   { title: 'Artificial Intelligence', text: 'Teaching machines to learn, and asking what they should learn for.' },
@@ -229,13 +268,14 @@ export const contact = {
   resumeFr: 'cv/stella-gbaguidi-cv-fr.pdf',
 };
 
-export const sections = ['hero', 'about', 'mind', 'build', 'beyond', 'future', 'connect'] as const;
+export const sections = ['hero', 'about', 'mind', 'experience', 'build', 'beyond', 'future', 'connect'] as const;
 export type SectionId = (typeof sections)[number];
 
 export const railLabels: Record<SectionId, string> = {
   hero: 'Seed',
   about: 'Roots',
   mind: 'Trunk',
+  experience: 'Rings',
   build: 'Branches',
   beyond: 'Leaves',
   future: 'Bloom',
@@ -247,6 +287,7 @@ export const petalDensity: Record<SectionId, number> = {
   hero: 18,
   about: 7,
   mind: 6,
+  experience: 6,
   build: 5,
   beyond: 9,
   future: 34,

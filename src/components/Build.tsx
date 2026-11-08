@@ -62,7 +62,7 @@ export function Build() {
       <div className="wrap">
         <div className="build-head">
           <div>
-            <Reveal className="sh"><b>IV</b><span className="line"></span>{t.build.head}</Reveal>
+            <Reveal className="sh"><b>V</b><span className="line"></span>{t.build.head}</Reveal>
             <Reveal as="h2" className="h2">{t.build.h2a}<em>{t.build.h2em}</em>{t.build.h2b}</Reveal>
           </div>
           <Reveal as="p">{t.build.intro}</Reveal>

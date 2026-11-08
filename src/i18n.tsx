@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { facts, futureColumns, mindItems, path, projects, railLabels, type Project, type SectionId } from './data/content';
-import { factsFr, futureColumnsFr, mindItemsFr, pathFr, projectsFr } from './data/content.fr';
+import { experiences, facts, futureColumns, mindItems, path, projects, railLabels, type Experience, type Project, type SectionId } from './data/content';
+import { experiencesFr, factsFr, futureColumnsFr, mindItemsFr, pathFr, projectsFr } from './data/content.fr';
 
 export type Lang = 'en' | 'fr';
 
@@ -14,10 +14,11 @@ export interface Strings {
   cvLabel: string;
   menuOpen: string;
   menuClose: string;
-  nav: Record<'about' | 'mind' | 'build' | 'beyond' | 'future' | 'connect', string>;
+  nav: Record<'about' | 'mind' | 'experience' | 'build' | 'beyond' | 'future' | 'connect', string>;
   rail: Record<SectionId, string>;
   hero: { eyebrow: string; tagA: string; tagB: string; tagEm: string; meta: [string, string, string]; discover: string; connect: string; treeLabel: string; treeCaption: string; scroll: string };
   about: { portraitAlt: string; portrait: string; head: string; h2a: string; h2em: string; h2z: string; lead: string; body1: string; body2: string };
+  experience: { head: string; h2a: string; h2em: string; intro: string };
   mind: { head: string; h2a: string; h2em: string; h2z: string; intro: string };
   build: { slideOverview: string; slideStory: string; slideCode: string; slidePictures: string; scrollHint: string; head: string; h2a: string; h2em: string; h2b: string; intro: string; more: string; readStory: string; closeStory: string };
   beyond: {
@@ -38,7 +39,7 @@ const en: Strings = {
   cvLabel: 'Open my CV (PDF)',
   menuOpen: 'Open the menu',
   menuClose: 'Close the menu',
-  nav: { about: 'About', mind: 'Mind', build: 'Work', beyond: 'Beyond', future: 'Future', connect: 'Contact' },
+  nav: { about: 'About', mind: 'Mind', experience: 'Experience', build: 'Projects', beyond: 'Beyond', future: 'Future', connect: 'Contact' },
   rail: railLabels,
   hero: {
     eyebrow: 'Welcome to my world',
@@ -62,6 +63,12 @@ const en: Strings = {
     lead: 'I’m Stella, a computer science student who believes code is one of the most elegant ways to turn an idea into something real.',
     body1: 'I’m drawn to software engineering for its rigor, and to artificial intelligence for its possibilities. But what truly moves me is the moment a problem becomes a product: understanding what people need, designing the right solution, and building it until it works, beautifully.',
     body2: 'Beyond the screen, I’m an entrepreneur at heart. I like to experiment, to start things, and to build with the ambition of creating something that lasts.',
+  },
+  experience: {
+    head: 'Experience · The rings',
+    h2a: 'Learning on ',
+    h2em: 'real projects.',
+    intro: 'Two internships, one in web development and one in data.',
   },
   mind: {
     head: 'My mind · The trunk',
@@ -120,8 +127,8 @@ const fr: Strings = {
   cvLabel: 'Ouvrir mon CV (PDF)',
   menuOpen: 'Ouvrir le menu',
   menuClose: 'Fermer le menu',
-  nav: { about: 'À propos', mind: 'Esprit', build: 'Projets', beyond: 'Au-delà', future: 'Avenir', connect: 'Contact' },
-  rail: { hero: 'Graine', about: 'Racines', mind: 'Tronc', build: 'Branches', beyond: 'Feuilles', future: 'Floraison', connect: 'Pétales' },
+  nav: { about: 'À propos', mind: 'Esprit', experience: 'Expérience', build: 'Projets', beyond: 'Au-delà', future: 'Avenir', connect: 'Contact' },
+  rail: { hero: 'Graine', about: 'Racines', mind: 'Tronc', experience: 'Cernes', build: 'Branches', beyond: 'Feuilles', future: 'Floraison', connect: 'Pétales' },
   hero: {
     eyebrow: 'Bienvenue dans mon monde',
     tagA: 'Je construis des choses. J’explore des idées.',
@@ -144,6 +151,12 @@ const fr: Strings = {
     lead: 'Je m’appelle Stella, je fais des études d’informatique et je crois que le code est l’une des plus belles façons de transformer une idée en réalité.',
     body1: 'Le génie logiciel m’attire par sa rigueur, et l’intelligence artificielle par ses possibilités. Mais ce qui me touche vraiment, c’est le moment où un problème devient un produit : comprendre ce dont les gens ont besoin, concevoir la bonne solution, et la construire jusqu’à ce qu’elle fonctionne, et qu’elle soit belle.',
     body2: 'Au-delà de l’écran, j’ai l’esprit entrepreneur. J’aime expérimenter, lancer des choses, et construire avec l’ambition de créer quelque chose qui dure.',
+  },
+  experience: {
+    head: 'Expérience · Les cernes',
+    h2a: 'Apprendre sur ',
+    h2em: 'de vrais projets.',
+    intro: 'Deux stages, l’un en développement web, l’autre en data.',
   },
   mind: {
     head: 'Mon esprit · Le tronc',
@@ -200,6 +213,7 @@ export interface Localized {
   projects: Project[];
   mindItems: typeof mindItems;
   facts: typeof facts;
+  experiences: Experience[];
   path: { state: 'done' | 'now' | 'next'; title: string; caption: string }[];
   futureColumns: typeof futureColumns;
 }
@@ -235,12 +249,13 @@ export function localizeProject(project: Project, lang: Lang): Project {
 
 export function localize(lang: Lang): Localized {
   if (lang === 'en') {
-    return { projects, mindItems, facts, path: [...path], futureColumns };
+    return { projects, mindItems, facts, experiences, path: [...path], futureColumns };
   }
   return {
     projects: projects.map((project) => localizeProject(project, lang)),
     mindItems: mindItemsFr,
     facts: factsFr,
+    experiences: experiences.map((experience, index) => ({ ...experience, ...experiencesFr[index]! })),
     path: path.map((node, index) => ({ ...node, ...pathFr[index]! })),
     futureColumns: futureColumnsFr,
   };

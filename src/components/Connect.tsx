@@ -31,7 +31,7 @@ export function Connect() {
   return (
     <section className="connect" id="connect">
       <div className="wrap">
-        <Reveal className="sh"><b>VII</b><span className="line"></span>{c.head}</Reveal>
+        <Reveal className="sh"><b>VIII</b><span className="line"></span>{c.head}</Reveal>
         <Reveal as="h2" className="h2">{c.h2a}<em>{c.h2em}</em></Reveal>
         <Reveal as="p" className="sub">{c.sub}</Reveal>
         <Reveal className="mail">

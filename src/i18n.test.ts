@@ -2,8 +2,8 @@ import { existsSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { contact, futureColumns, mindItems, path, portrait, projects } from './data/content';
-import { factsFr, futureColumnsFr, mindItemsFr, pathFr, projectsFr } from './data/content.fr';
+import { contact, experiences, futureColumns, mindItems, path, portrait, projects } from './data/content';
+import { experiencesFr, factsFr, futureColumnsFr, mindItemsFr, pathFr, projectsFr } from './data/content.fr';
 import { facts } from './data/content';
 import { localize } from './i18n';
 
@@ -84,5 +84,20 @@ describe('Public CV', () => {
     for (const file of [contact.resume, contact.resumeFr]) {
       expect(existsSync(resolve(publicDir, file)), file).toBe(true);
     }
+  });
+});
+
+describe('Experience', () => {
+  it('is translated with the same number of bullets', () => {
+    expect(experiencesFr).toHaveLength(experiences.length);
+    experiences.forEach((experience, index) => {
+      expect(experiencesFr[index]!.bullets).toHaveLength(experience.bullets.length);
+    });
+  });
+
+  it('uses no em dash and no emoji', () => {
+    const text = JSON.stringify([experiences, experiencesFr]);
+    expect(text).not.toContain('\u2014');
+    expect(text).not.toMatch(/\p{Extended_Pictographic}/u);
   });
 });

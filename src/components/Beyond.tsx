@@ -8,7 +8,7 @@ export function Beyond() {
     <section id="beyond">
       <div className="wrap">
         <div className="beyond-head">
-          <Reveal className="sh"><b>V</b><span className="line"></span>{b.head}</Reveal>
+          <Reveal className="sh"><b>VI</b><span className="line"></span>{b.head}</Reveal>
           <Reveal as="h2" className="h2">{b.h2a}<em>{b.h2em}</em></Reveal>
           <Reveal as="p">{b.intro}</Reveal>
         </div>

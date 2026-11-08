@@ -3,6 +3,7 @@ import { About } from './components/About';
 import { Beyond } from './components/Beyond';
 import { Build } from './components/Build';
 import { Connect } from './components/Connect';
+import { Experience } from './components/Experience';
 import { Future } from './components/Future';
 import { Hero } from './components/Hero';
 import { Mind } from './components/Mind';
@@ -26,6 +27,7 @@ export function App() {
         <Hero treeRef={treeRef} />
         <About />
         <Mind />
+        <Experience />
         <Build />
         <Beyond />
         <Future />

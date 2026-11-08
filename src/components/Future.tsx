@@ -7,7 +7,7 @@ export function Future() {
   return (
     <section className="future" id="future">
       <div className="wrap">
-        <Reveal className="sh"><b>VI</b><span className="line"></span>{t.future.head}</Reveal>
+        <Reveal className="sh"><b>VII</b><span className="line"></span>{t.future.head}</Reveal>
         <Reveal as="p" className="big-quote">{t.future.quoteA}<em>{t.future.quoteEm}</em></Reveal>
         <Reveal className="path">
           {path.map((node) => (

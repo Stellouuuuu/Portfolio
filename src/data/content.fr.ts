@@ -164,3 +164,25 @@ export const futureColumnsFr = [
   { label: 'Je construis ensuite', text: 'Mnemo et AegisAI, et des outils qui résolvent de vrais problèmes autour de moi.' },
   { label: 'Je deviens', text: 'Quelqu’un qui construit une technologie à l’impact durable, en ingénierie comme en entrepreneuriat.' },
 ];
+
+export const experiencesFr = [
+  {
+    title: 'Stagiaire data analyst',
+    type: 'Alternance, 2 jours par semaine',
+    place: 'Cotonou, Bénin',
+    bullets: [
+      'En binôme, prototype de plateforme data pour le port : ETL quotidien des escales, des mouvements de conteneurs et de la météo, avec contrôles qualité et rapport d’anomalies, orchestré par Airflow vers PostgreSQL.',
+      'Ma part : l’interface React (tableau de bord d’activité et de qualité des données, exécutions, connecteurs, partage, notifications) et des routes FastAPI (authentification JWT, statistiques, lancement et suivi des pipelines).',
+      'Travail sur des données fictives avec anomalies volontaires, les sources réelles n’étant pas encore accessibles.',
+    ],
+  },
+  {
+    title: 'Stagiaire en développement web',
+    type: 'Stage',
+    place: 'Calavi, Bénin',
+    bullets: [
+      'Développement et maintenance d’applications web pour des projets clients, selon les spécifications, et intégration d’API tierces pour étendre des applications existantes.',
+      'Conception et modélisation de bases de données relationnelles et non relationnelles, et mise en place de tests unitaires et d’intégration pour fiabiliser le code livré.',
+    ],
+  },
+];

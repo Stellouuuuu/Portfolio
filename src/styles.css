@@ -470,3 +470,18 @@ footer .sig{font-size:20px;font-style:normal;letter-spacing:-.01em}
   .nav .cv-item{display:block}
   .nav ul .cv-item a{color:var(--rose-ink)}
 }
+
+/* Experience */
+.xp-list{list-style:none;border-top:1px solid rgba(59,42,34,.18)}
+.xp{display:grid;grid-template-columns:200px 1fr;gap:clamp(24px,5vw,70px);padding:38px 0;border-bottom:1px solid rgba(59,42,34,.18)}
+.xp-when{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.1em}
+.xp-period{color:var(--gold-ink);font-weight:500}
+.xp-place{color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-size:10px}
+.xp-body h3{font-family:var(--display);font-weight:300;font-size:clamp(26px,3vw,38px);line-height:1.1;letter-spacing:-.03em;margin-bottom:6px}
+.xp-org{font-size:14px;color:var(--rose-ink);margin-bottom:16px}
+.xp-org span{color:var(--muted)}
+.xp-body ul{list-style:none;display:grid;gap:9px;max-width:72ch;margin-bottom:16px}
+.xp-body li{position:relative;padding-left:18px;font-size:14.5px;line-height:1.6;color:var(--choc-2)}
+.xp-body li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--gold)}
+.xp-body .stack{margin-bottom:0}
+@media (max-width:760px){.xp{grid-template-columns:1fr;gap:14px;padding:30px 0}.xp-when{flex-direction:row;flex-wrap:wrap;gap:6px 16px}}

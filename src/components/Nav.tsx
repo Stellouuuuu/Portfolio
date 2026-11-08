@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { SectionId } from '../data/content';
+import { contact, type SectionId } from '../data/content';
 import { useLang } from '../i18n';
 
 const ids = ['about', 'mind', 'build', 'beyond', 'future', 'connect'] as const satisfies readonly SectionId[];
@@ -8,6 +8,7 @@ export function Nav({ scrolled, active }: { scrolled: boolean; active: SectionId
   const { lang, setLang, t } = useLang();
   const [open, setOpen] = useState(false);
   const other = lang === 'en' ? 'fr' : 'en';
+  const cv = lang === 'fr' ? contact.resumeFr : contact.resume;
 
   useEffect(() => {
     if (!open) {
@@ -35,8 +36,12 @@ export function Nav({ scrolled, active }: { scrolled: boolean; active: SectionId
               <a href={`#${id}`} className={active === id ? 'active' : undefined} onClick={() => setOpen(false)}>{t.nav[id]}</a>
             </li>
           ))}
+          <li className="cv-item">
+            <a href={cv} target="_blank" rel="noopener" aria-label={t.cvLabel}>{t.cv}</a>
+          </li>
         </ul>
         <div className="nav-tools">
+          <a className="cv-btn" href={cv} target="_blank" rel="noopener" aria-label={t.cvLabel}>{t.cv}</a>
           <button className="lang" onClick={() => setLang(other)} aria-label={t.switchTo} lang={other}>
             <span className={lang === 'en' ? 'on' : undefined}>EN</span>
             <span className="sep">/</span>

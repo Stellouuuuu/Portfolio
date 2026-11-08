@@ -10,6 +10,8 @@ export interface Strings {
   skip: string;
   home: string;
   switchTo: string;
+  cv: string;
+  cvLabel: string;
   menuOpen: string;
   menuClose: string;
   nav: Record<'about' | 'mind' | 'build' | 'beyond' | 'future' | 'connect', string>;
@@ -32,6 +34,8 @@ const en: Strings = {
   skip: 'Skip to content',
   home: 'Stella Gbaguidi, back to the top',
   switchTo: 'Passer en français',
+  cv: 'CV',
+  cvLabel: 'Open my CV (PDF)',
   menuOpen: 'Open the menu',
   menuClose: 'Close the menu',
   nav: { about: 'About', mind: 'Mind', build: 'Work', beyond: 'Beyond', future: 'Future', connect: 'Contact' },
@@ -112,6 +116,8 @@ const fr: Strings = {
   skip: 'Aller au contenu',
   home: 'Stella Gbaguidi, retour en haut de page',
   switchTo: 'Switch to English',
+  cv: 'CV',
+  cvLabel: 'Ouvrir mon CV (PDF)',
   menuOpen: 'Ouvrir le menu',
   menuClose: 'Fermer le menu',
   nav: { about: 'À propos', mind: 'Esprit', build: 'Projets', beyond: 'Au-delà', future: 'Avenir', connect: 'Contact' },

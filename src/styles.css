@@ -460,3 +460,13 @@ footer .sig{font-size:20px;font-style:normal;letter-spacing:-.01em}
 .t3 h4{color:var(--ivory)}
 .t3 p,.t3 .tag-s{color:#E8DCCF}
 .t1 .tile-bg{object-position:50% 50%}
+
+/* CV button in the navigation */
+.nav .cv-btn{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory);background:var(--choc);border:1px solid var(--choc);border-radius:999px;padding:7px 15px;transition:background .3s var(--ease),color .3s var(--ease)}
+.nav .cv-btn:hover{background:transparent;color:var(--choc)}
+.nav .cv-item{display:none}
+@media (max-width:960px){
+  .nav .cv-btn{display:none}
+  .nav .cv-item{display:block}
+  .nav ul .cv-item a{color:var(--rose-ink)}
+}

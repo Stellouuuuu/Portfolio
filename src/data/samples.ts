@@ -35,33 +35,6 @@ export const samples: Record<string, Sample> = {
       { src: 'assets/img/mnemo-approval.png', alt: 'Mnemo asking for approval before erasing a memory: a banner with the Allow and Refuse buttons above the conversation', caption: 'A sensitive action waits for me. The model says it is done; the server has not done anything yet.' },
       { src: 'assets/img/mnemo-memory.png', alt: 'Mnemo’s memory screen listing what it knows about the user, each item with Edit and Forget buttons', caption: 'The memory screen: what Mnemo knows about me, each item editable or forgotten.' },
     ],
-    code: {
-      file: 'backend/src/tools/runtime.ts',
-      caption: 'The server decides: an unknown tool is rejected, and a sensitive one waits for the user.',
-      code: `const tool = this.byName.get(call.name);
-if (!tool) {
-  await this.audit.record({ ...base, tool: call.name, status: 'rejected', detail: 'outil inconnu' });
-  return { kind: 'rejected', tool: call.name, output: \`Outil inconnu : « \${call.name} ».\` };
-}
-
-const checked = validateArguments(tool.parameters, call.arguments);
-if (!checked.ok) {
-  return { kind: 'rejected', tool: tool.name, output: \`Appel refusé : \${checked.error}\` };
-}
-
-if (tool.risk === 'sensitive') {
-  const action = this.createPending(tool, checked.args, context);
-  await this.audit.record({ ...base, tool: tool.name, status: 'confirmation_requested' });
-  return { kind: 'confirmation', tool: tool.name, action, output: "... n'a PAS été exécutée ..." };
-}
-
-return this.run(tool, checked.args, context);`,
-    },
-    terminal: {
-      command: 'python3 security/check-guarantees.py aegis-report.json',
-      caption: 'The CI step: AegisAI scans Mnemo, and the build fails if a server guarantee is broken.',
-      output: ["score 50/100, 4 finding(s): ['OS-05', 'PI-02', 'PI-03', 'PI-04']", '$ echo $?', '0'],
-    },
   },
   'Gestion de boutique': {
     gallery: [

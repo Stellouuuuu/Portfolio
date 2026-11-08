@@ -1,3 +1,6 @@
+import { existsSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { futureColumns, mindItems, path, projects } from './data/content';
 import { factsFr, futureColumnsFr, mindItemsFr, pathFr, projectsFr } from './data/content.fr';
@@ -41,5 +44,27 @@ describe('French content', () => {
     const text = JSON.stringify([projectsFr, mindItemsFr, factsFr, pathFr, futureColumnsFr]);
     expect(text).not.toContain('—');
     expect(text).not.toMatch(/\p{Extended_Pictographic}/u);
+  });
+});
+
+describe('Showcase samples', () => {
+  it('has a sample for every featured project, translated', () => {
+    for (const project of projects.filter((p) => p.featured)) {
+      expect(project.sample).toBeDefined();
+      expect(project.sample!.gallery.length).toBeGreaterThan(0);
+      const fr = projectsFr[project.title]!.sample;
+      expect(fr?.gallery).toHaveLength(project.sample!.gallery.length);
+    }
+  });
+});
+
+describe('Showcase pictures', () => {
+  const publicDir = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'public');
+  it('only points at files that exist', () => {
+    for (const project of projects) {
+      for (const figure of project.sample?.gallery ?? []) {
+        expect(existsSync(resolve(publicDir, figure.src)), figure.src).toBe(true);
+      }
+    }
   });
 });

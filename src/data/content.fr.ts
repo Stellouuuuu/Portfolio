@@ -9,6 +9,7 @@ export interface ProjectFr {
   story: ProjectStory[];
   links: string[];
   alt?: string;
+  sample?: { gallery: { alt: string; caption: string }[]; codeCaption: string; terminalCaption: string };
 }
 
 export const projectsFr: Record<string, ProjectFr> = {
@@ -28,6 +29,14 @@ export const projectsFr: Record<string, ProjectFr> = {
       { label: 'Le défi', text: 'Les modèles ne sont pas déterministes. J’ai tout mesuré sur un vrai modèle local, et un essai témoin a montré que mes « attaques adaptatives » apportaient peu par rapport à un simple nouvel essai. J’ai réécrit ce que j’avais affirmé.' },
       { label: 'La leçon', text: 'Mesurer avant de dire que ça marche, garder un témoin, et écrire les limites à côté des chiffres.' },
     ],
+    sample: {
+      gallery: [
+        { alt: 'Une faille dans AegisAI : l’attaque envoyée, la réponse qui a divulgué un secret planté, la règle violée et comment corriger', caption: 'Chaque faille montre l’attaque envoyée, la réponse, la règle violée et la correction.' },
+        { alt: 'La vue d’ensemble d’AegisAI : un labo vulnérable à 0 et sa variante corrigée à 100', caption: 'Un labo vulnérable obtient 0, sa variante corrigée obtient 100.' },
+      ],
+      codeCaption: 'Une détection ne compte que si elle tient au rejeu, et pas si une réponse normale la déclenche déjà.',
+      terminalCaption: 'Le scan du chatbot vulnérable fourni, tel qu’affiché.',
+    },
     links: ['Code source sur GitHub'],
   },
   Mnemo: {
@@ -46,6 +55,13 @@ export const projectsFr: Record<string, ProjectFr> = {
       { label: 'Le défi', text: 'Mon premier modèle d’embeddings ne distinguait pas une question pertinente d’une question sans rapport en français : j’en ai mesuré deux sur 26 questions et je l’ai remplacé. Puis j’ai audité toute l’application avec mon propre scanner : 35 demandes injectées pour supprimer une mémoire, toutes arrêtées par le serveur.' },
       { label: 'La leçon', text: 'Mettre les garanties dans le code, pas dans le prompt. Le modèle choisi change le score d’audit, de 69 à 30 sur 100 à la dernière comparaison, mais pas ce que le serveur autorise.' },
     ],
+    sample: {
+      gallery: [
+        { alt: 'L’écran de mémoire de Mnemo listant ce qu’il sait de l’utilisateur, chaque élément avec des boutons Modifier et Oublier', caption: 'L’écran de mémoire : ce que Mnemo sait de moi, chaque élément modifiable ou oubliable.' },
+      ],
+      codeCaption: 'Le serveur décide : un outil inconnu est refusé, et un outil sensible attend l’utilisateur.',
+      terminalCaption: 'L’étape de CI : AegisAI scanne Mnemo, et le build échoue si une garantie du serveur est brisée.',
+    },
     links: ['Code source sur GitHub'],
   },
   MyTorch: {
@@ -115,6 +131,14 @@ export const projectsFr: Record<string, ProjectFr> = {
       { label: 'Le défi', text: 'Faire tourner la version web en production : une base locale dans le navigateur demande des en-têtes de sécurité précis, et l’hébergeur refusait les dossiers nommés node_modules, donc le build les renomme.' },
       { label: 'La leçon', text: 'L’essentiel du travail d’une vraie application est la partie peu glorieuse : hors ligne, synchronisation et déploiement.' },
     ],
+    sample: {
+      gallery: [
+        { alt: 'La liste des produits de l’application dans un cadre de téléphone : huile, riz, savon, lait et sucre avec leur stock et leur prix', caption: 'La liste des produits, avec stock et prix en un coup d’œil.' },
+        { alt: 'La section fonctionnalités du site de présentation : gestion du stock et caisse rapide', caption: 'Gestion du stock et caisse rapide.' },
+      ],
+      codeCaption: 'La liste des alertes de stock : une seule requête, les plus urgents d’abord, sans rien modifier.',
+      terminalCaption: 'La suite de tests de l’application, lancée sur ma machine.',
+    },
     links: ['Ouvrir l’application'],
   },
 };

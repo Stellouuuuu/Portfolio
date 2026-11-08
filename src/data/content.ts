@@ -1,3 +1,5 @@
+import { samples, type Sample } from './samples';
+
 export interface ProjectStory {
   label: string;
   text: string;
@@ -25,6 +27,8 @@ export interface Project {
   gradient: string;
   shot?: { src: string; alt: string };
   story: ProjectStory[];
+  /** More pictures, a code excerpt and a terminal result, for the featured projects. */
+  sample?: Sample;
   links: { label: string; url: string }[];
 }
 
@@ -52,6 +56,7 @@ export const projects: Project[] = [
       { label: 'The challenge', text: 'Models are not deterministic. I measured everything on a real local model, and a control run showed that my “adaptive attacks” gained little over simply trying again. I rewrote what I had claimed.' },
       { label: 'The lesson', text: 'Measure before saying it works, keep a control, and write the limits next to the numbers.' },
     ],
+    sample: samples['AegisAI'],
     links: [{ label: 'Source on GitHub', url: 'https://github.com/Stellouuuuu/aegisai' }],
   },
   {
@@ -78,6 +83,7 @@ export const projects: Project[] = [
       { label: 'The challenge', text: 'My first embedding model could not tell a relevant question from an unrelated one in French, so I measured two models on 26 questions and replaced it. Then I audited the whole app with my own scanner: 35 injected requests to delete a memory, all stopped by the server.' },
       { label: 'The lesson', text: 'Put the guarantees in code, not in the prompt. The model I choose changes the audit score, from 69 to 30 out of 100 on the latest comparison, but not what the server allows.' },
     ],
+    sample: samples['Mnemo'],
     links: [{ label: 'Source on GitHub', url: 'https://github.com/Stellouuuuu/mnemo' }],
   },
   {
@@ -172,6 +178,7 @@ export const projects: Project[] = [
       { label: 'The challenge', text: 'Getting the web version to run in production: a local database in the browser needs specific security headers, and the hosting refused folders named node_modules, so the build renames them.' },
       { label: 'The lesson', text: 'Most of the work in a real app is the unglamorous part: offline, sync and deployment.' },
     ],
+    sample: samples['Gestion de boutique'],
     links: [{ label: 'Open the app', url: 'https://gestion-boutique.pages.dev/' }],
   },
 ];

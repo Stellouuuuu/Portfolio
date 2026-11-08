@@ -2,22 +2,11 @@ import { useState } from 'react';
 import type { Project } from '../data/content';
 import { useLang } from '../i18n';
 import { Reveal } from './Reveal';
+import { Links, Metrics } from './ProjectParts';
+import { Showcase } from './Showcase';
 
 function storyId(project: Project): string {
   return `story-${project.title.toLowerCase().replace(/\s+/g, '-')}`;
-}
-
-function Metrics({ project }: { project: Project }) {
-  return (
-    <dl className="metrics">
-      {project.metrics.map((metric) => (
-        <div key={metric.label}>
-          <dt>{metric.value}</dt>
-          <dd>{metric.label}</dd>
-        </div>
-      ))}
-    </dl>
-  );
 }
 
 function Story({ project, open, onToggle }: { project: Project; open: boolean; onToggle: () => void }) {
@@ -38,45 +27,6 @@ function Story({ project, open, onToggle }: { project: Project; open: boolean; o
         </div>
       </div>
     </>
-  );
-}
-
-function Links({ project }: { project: Project }) {
-  if (project.links.length === 0) {
-    return null;
-  }
-  return (
-    <div className="links">
-      {project.links.map((link) => (
-        <a key={link.url} className="tlink" href={link.url} target="_blank" rel="noopener">{link.label} ↗</a>
-      ))}
-    </div>
-  );
-}
-
-function ProjectCard({ project }: { project: Project }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <Reveal as="article" className={`proj${open ? ' open' : ''}`}>
-      <div className={`pv${project.shot ? ' has-shot' : ''}`} style={{ ['--g' as string]: project.gradient }}>
-        <div className="frame"></div>
-        <div className="letter">{project.letter}</div>
-        {project.shot ? <img className="shot" src={project.shot.src} alt={project.shot.alt} loading="lazy" /> : null}
-      </div>
-      <div className="pi">
-        <div className="row">
-          <span className="no">No. {project.no}</span>
-          <span className={`status${project.bloom ? ' bloom' : ''}`}>{project.status}</span>
-        </div>
-        <h3>{project.title}</h3>
-        <p className="small-caps cat">{project.category}</p>
-        <p className="desc">{project.description}</p>
-        <Metrics project={project} />
-        <p className="stack">{project.stack}</p>
-        <Links project={project} />
-        <Story project={project} open={open} onToggle={() => setOpen((value) => !value)} />
-      </div>
-    </Reveal>
   );
 }
 
@@ -117,9 +67,9 @@ export function Build() {
           </div>
           <Reveal as="p">{t.build.intro}</Reveal>
         </div>
-        {featured.map((project) => (
-          <ProjectCard key={project.title} project={project} />
-        ))}
+      </div>
+      <Showcase projects={featured} />
+      <div className="wrap">
         {more.length > 0 ? (
           <div className="more">
             <Reveal className="sh more-title"><span className="line"></span>{t.build.more}</Reveal>

@@ -15,7 +15,7 @@ export interface Strings {
   hero: { eyebrow: string; tagA: string; tagB: string; tagEm: string; meta: [string, string, string]; discover: string; connect: string; treeLabel: string; treeCaption: string; scroll: string };
   about: { portraitAlt: string; portrait: string; head: string; h2a: string; h2em: string; h2z: string; lead: string; body1: string; body2: string };
   mind: { head: string; h2a: string; h2em: string; h2z: string; intro: string };
-  build: { head: string; h2a: string; h2em: string; h2b: string; intro: string; more: string; readStory: string; closeStory: string };
+  build: { slideOverview: string; slideStory: string; slideCode: string; scrollHint: string; head: string; h2a: string; h2em: string; h2b: string; intro: string; more: string; readStory: string; closeStory: string };
   beyond: {
     head: string; h2a: string; h2em: string; intro: string;
     t1: [string, string, string]; quote: string; t3: [string, string, string];
@@ -69,6 +69,10 @@ const en: Strings = {
     h2b: ' into systems.',
     intro: 'Every project starts with a question. Here is what I set out to solve, how I built it, and what it taught me.',
     more: 'More work',
+    slideOverview: 'Overview',
+    slideStory: 'The story',
+    slideCode: 'Under the hood',
+    scrollHint: 'Keep scrolling',
     readStory: 'Read the story ',
     closeStory: 'Close the story ',
   },
@@ -142,6 +146,10 @@ const fr: Strings = {
     h2b: ' des systèmes.',
     intro: 'Chaque projet commence par une question. Voici ce que je voulais résoudre, comment je l’ai construit, et ce qu’il m’a appris.',
     more: 'Autres projets',
+    slideOverview: 'Aperçu',
+    slideStory: 'L’histoire',
+    slideCode: 'Sous le capot',
+    scrollHint: 'Continuez à défiler',
     readStory: 'Lire l’histoire ',
     closeStory: 'Fermer l’histoire ',
   },
@@ -196,6 +204,15 @@ export function localizeProject(project: Project, lang: Lang): Project {
     story: text.story,
     links: project.links.map((link, index) => ({ ...link, label: text.links[index] ?? link.label })),
     shot: project.shot && text.alt ? { ...project.shot, alt: text.alt } : project.shot,
+    sample:
+      project.sample && text.sample
+        ? {
+            ...project.sample,
+            gallery: project.sample.gallery.map((figure, index) => ({ ...figure, ...text.sample!.gallery[index] })),
+            code: { ...project.sample.code, caption: text.sample.codeCaption },
+            terminal: { ...project.sample.terminal, caption: text.sample.terminalCaption },
+          }
+        : project.sample,
   };
 }
 

@@ -33,10 +33,14 @@ function mount() {
 describe('Build section', () => {
   it('lists every project with its status and story', () => {
     const el = mount();
-    expect(el.querySelectorAll('article.proj')).toHaveLength(projects.filter((p) => p.featured).length);
+    const featured = projects.filter((p) => p.featured);
+    expect(el.querySelectorAll('.sc-panel')).toHaveLength(featured.length * 3);
     expect(el.querySelectorAll('article.more-row')).toHaveLength(projects.filter((p) => !p.featured).length);
     expect(el.querySelectorAll('.metrics dt')).toHaveLength(projects.reduce((sum, p) => sum + p.metrics.length, 0));
-    expect(el.querySelectorAll('.steps li')).toHaveLength(projects.length * 5);
+    expect(el.querySelectorAll('.sc-steps li')).toHaveLength(featured.length * 5);
+    expect(el.querySelectorAll('.steps li')).toHaveLength((projects.length - featured.length) * 5);
+    expect(el.querySelectorAll('.sc-card.code')).toHaveLength(featured.length);
+    expect(el.querySelectorAll('.sc-card.term')).toHaveLength(featured.length);
     expect(el.textContent).toContain('In bloom · in development');
     expect(el.textContent).toContain('35 / 35');
   });
@@ -44,7 +48,7 @@ describe('Build section', () => {
   it('opens and closes a story, and says so to assistive technology', () => {
     const el = mount();
     const button = el.querySelector<HTMLButtonElement>('.story-btn')!;
-    const card = button.closest('.proj')!;
+    const card = button.closest('.more-row')!;
     expect(button.getAttribute('aria-expanded')).toBe('false');
     act(() => button.click());
     expect(button.getAttribute('aria-expanded')).toBe('true');

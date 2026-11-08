@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { futureColumns, mindItems, path, portrait, projects } from './data/content';
+import { contact, futureColumns, mindItems, path, portrait, projects } from './data/content';
 import { factsFr, futureColumnsFr, mindItemsFr, pathFr, projectsFr } from './data/content.fr';
 import { facts } from './data/content';
 import { localize } from './i18n';
@@ -74,6 +74,15 @@ describe('Portrait', () => {
     if (portrait) {
       const publicDir = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'public');
       expect(existsSync(resolve(publicDir, portrait))).toBe(true);
+    }
+  });
+});
+
+describe('Public CV', () => {
+  const publicDir = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'public');
+  it('has a file per language', () => {
+    for (const file of [contact.resume, contact.resumeFr]) {
+      expect(existsSync(resolve(publicDir, file)), file).toBe(true);
     }
   });
 });

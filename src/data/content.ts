@@ -221,7 +221,9 @@ export const contact = {
   github: 'https://github.com/Stellouuuuu',
   /** Fill these in to show the links: an empty value keeps the link hidden. */
   linkedin: 'https://www.linkedin.com/in/stella-gbaguidi-2424b7358/',
-  resume: '',
+  /** The CV for the public site has no phone number. One file per language. */
+  resume: 'cv/stella-gbaguidi-cv-en.pdf',
+  resumeFr: 'cv/stella-gbaguidi-cv-fr.pdf',
 };
 
 export const sections = ['hero', 'about', 'mind', 'build', 'beyond', 'future', 'connect'] as const;

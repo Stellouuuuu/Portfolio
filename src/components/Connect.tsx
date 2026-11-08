@@ -4,7 +4,7 @@ import { useLang } from '../i18n';
 import { Reveal } from './Reveal';
 
 export function Connect() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const c = t.connect;
   const [message, setMessage] = useState<string | null>(null);
   const timer = useRef<number>(undefined);
@@ -25,7 +25,7 @@ export function Connect() {
   const socials = [
     { label: 'LinkedIn', url: contact.linkedin },
     { label: 'GitHub', url: contact.github },
-    { label: c.resume, url: contact.resume },
+    { label: c.resume, url: lang === 'fr' ? contact.resumeFr : contact.resume },
   ].filter((item) => item.url !== '');
 
   return (

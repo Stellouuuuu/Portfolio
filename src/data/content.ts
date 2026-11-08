@@ -3,8 +3,17 @@ export interface ProjectStory {
   text: string;
 }
 
+export interface Metric {
+  value: string;
+  label: string;
+}
+
 export interface Project {
-  no: string;
+  /** Number shown on a featured project. Other projects are listed without one. */
+  no?: string;
+  featured: boolean;
+  /** Two or three facts that can be checked in the project itself. */
+  metrics: Metric[];
   title: string;
   category: string;
   status: string;
@@ -22,6 +31,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     no: '01',
+    featured: true,
+    metrics: [{ value: '35 / 35', label: 'injected deletion requests held for approval by the server' }, { value: '3', label: 'local models compared on the same code' }],
     title: 'Mnemo',
     category: 'Artificial Intelligence · Local assistant',
     status: 'In bloom · in development',
@@ -46,6 +57,8 @@ export const projects: Project[] = [
   },
   {
     no: '02',
+    featured: true,
+    metrics: [{ value: '25', label: 'attack scenarios, replayed before anything is reported' }, { value: '245', label: 'automated tests' }],
     title: 'AegisAI',
     category: 'Security · AI applications',
     status: 'In bloom · open source',
@@ -68,11 +81,12 @@ export const projects: Project[] = [
     links: [{ label: 'Source on GitHub', url: 'https://github.com/Stellouuuuu/aegisai' }],
   },
   {
-    no: '03',
+    featured: false,
+    metrics: [{ value: '0 to 100', label: 'delay-risk score with its explaining factors' }, { value: '3', label: 'approaches compared: rules, logistic regression, boosting' }],
     title: 'BatiPredict',
     category: 'Machine Learning · Construction',
-    status: 'In bloom',
-    bloom: true,
+    status: 'Prototype · simulated data',
+    bloom: false,
     description: 'A tool that estimates the risk of delay on a building site, explains why, and suggests what to do about it.',
     stack: 'React · Express · MySQL · FastAPI · scikit-learn',
     letter: 'B',
@@ -87,10 +101,11 @@ export const projects: Project[] = [
     links: [],
   },
   {
-    no: '04',
+    featured: false,
+    metrics: [{ value: '10', label: 'functional modules in the MVP' }, { value: 'Docker + CI', label: 'local setup and GitHub Actions' }],
     title: 'AgriERP',
     category: 'Enterprise software · Agriculture',
-    status: 'Case study soon',
+    status: 'MVP built',
     bloom: false,
     description: 'An ERP for farms and cooperatives: plots, harvests, stock, staff, finances and a dashboard, per company.',
     stack: 'React · TypeScript · Express · PostgreSQL · Prisma · Docker',
@@ -106,7 +121,9 @@ export const projects: Project[] = [
     links: [],
   },
   {
-    no: '05',
+    no: '03',
+    featured: true,
+    metrics: [{ value: 'Offline', label: 'sales recorded without a connection, synced later' }, { value: 'Live', label: 'web version deployed and installable on a phone' }],
     title: 'Gestion de boutique',
     category: 'Mobile & web app · Retail',
     status: 'Live',
@@ -136,7 +153,7 @@ export const mindItems = [
 ];
 
 export const facts = [
-  { label: 'Currently', value: 'Computer Science Student' },
+  { label: 'Currently', value: 'Computer Science Student, Epitech' },
   { label: 'Focus', value: 'Software Engineering & AI' },
   { label: 'Driven by', value: 'Impact, craft & ambition' },
 ];
@@ -153,6 +170,9 @@ export const futureColumns = [
   { label: 'Building next', text: 'Mnemo and AegisAI, and tools that solve real problems around me.' },
   { label: 'Becoming', text: 'An engineer and founder who builds technology with lasting impact.' },
 ];
+
+/** Path of a portrait photo inside public/ (for example 'assets/img/portrait.jpg'). Empty shows the silhouette. */
+export const portrait = '';
 
 export const contact = {
   email: 'stellagbaguidi68@gmail.com',

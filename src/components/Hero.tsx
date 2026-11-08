@@ -15,7 +15,7 @@ export function Hero({ treeRef }: { treeRef: RefObject<SVGSVGElement | null> }) 
           I build things. I explore ideas.<br />I create <em>possibilities.</em>
         </p>
         <p className="meta fadein" style={delay(0.9)}>
-          Computer Science Student<b>·</b>Software Engineering<b>·</b>Artificial Intelligence
+          Student at Epitech<b>·</b>Software Engineering<b>·</b>Artificial Intelligence
         </p>
         <div className="hero-cta fadein" style={delay(1.1)}>
           <a href="#build" className="btn">Discover my work</a>

@@ -21,11 +21,28 @@ describe('project content', () => {
     }
   });
 
-  it('numbers projects 01..n without gaps or duplicates', () => {
-    expect(content.projects.map((p) => p.no)).toEqual(
-      content.projects.map((_, index) => String(index + 1).padStart(2, '0')),
-    );
+  it('numbers the featured projects 01..n and lists the rest without a number', () => {
+    const featured = content.projects.filter((p) => p.featured);
+    expect(featured.map((p) => p.no)).toEqual(featured.map((_, index) => String(index + 1).padStart(2, '0')));
+    expect(content.projects.filter((p) => !p.featured).every((p) => p.no === undefined)).toBe(true);
     expect(new Set(content.projects.map((p) => p.title)).size).toBe(content.projects.length);
+  });
+
+  it('shows two or three checkable facts on every project', () => {
+    for (const project of content.projects) {
+      expect(project.metrics.length, project.title).toBeGreaterThanOrEqual(2);
+      expect(project.metrics.length, project.title).toBeLessThanOrEqual(3);
+      for (const metric of project.metrics) {
+        expect(metric.value.length).toBeGreaterThan(0);
+        expect(metric.label.length).toBeGreaterThan(10);
+      }
+    }
+  });
+
+  it('keeps the strongest projects up front: only the ones with a link or a live app are featured', () => {
+    for (const project of content.projects.filter((p) => p.featured)) {
+      expect(project.links.length, project.title).toBeGreaterThan(0);
+    }
   });
 
   it('only links to https addresses', () => {

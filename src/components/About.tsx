@@ -1,4 +1,4 @@
-import { facts } from '../data/content';
+import { facts, portrait } from '../data/content';
 import { Reveal } from './Reveal';
 
 export function About() {
@@ -13,16 +13,9 @@ export function About() {
                 <path d="M18 118c2-30 15-46 32-46s30 16 32 46" />
               </svg>
             </div>
-            {/* A real photo replaces the silhouette when public/assets/img/portrait.jpg exists. */}
-            <img
-              className="portrait"
-              src="assets/img/portrait.jpg"
-              alt="Portrait of Stella Gbaguidi"
-              width={800}
-              height={1040}
-              loading="lazy"
-              onError={(event) => event.currentTarget.remove()}
-            />
+            {portrait ? (
+              <img className="portrait" src={portrait} alt="Portrait of Stella Gbaguidi" width={800} height={1040} loading="lazy" />
+            ) : null}
             <figcaption>Stella Gbaguidi</figcaption>
           </figure>
           <div className="note small-caps"><span>Portrait</span><span>MMXXVI</span></div>

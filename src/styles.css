@@ -1,8 +1,10 @@
 :root{
   --ivory:#F8F3EC; --cream:#F2EADF; --beige:#E9DECE; --sand:#DCCBB4;
-  --choc:#3B2A22; --choc-2:#6B5446; --muted:#9A8878;
+  --choc:#3B2A22; --choc-2:#6B5446; --muted:#6F5F52; --gold-ink:#7E6027; --rose-ink:#8E5265;
   --blush:#EBC3C8; --blush-2:#F6E3E4; --rose:#B87C89; --gold:#B8975A; --sage:#A9B6A1;
   --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --display:'Inter Tight','Inter', system-ui, -apple-system, sans-serif;
+  --mono:'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --sans:'Inter', system-ui, -apple-system, sans-serif;
   --pad:clamp(22px,5vw,72px);
   --ease:cubic-bezier(.2,.7,.2,1);
@@ -44,7 +46,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 section{position:relative;padding:clamp(100px,14vw,170px) var(--pad)}
 .wrap{max-width:1180px;margin:0 auto}
 .sh{display:flex;align-items:center;gap:18px;margin-bottom:34px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--choc-2)}
-.sh b{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.05em;color:var(--gold);font-style:italic}
+.sh b{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.05em;color:var(--gold-ink);font-style:italic}
 .sh span.line{height:1px;width:64px;background:var(--gold);opacity:.7}
 .h2{font-family:var(--serif);font-weight:300;font-size:clamp(42px,6vw,84px);line-height:1.02;letter-spacing:-.01em;max-width:15ch}
 .h2 em{color:var(--rose);font-weight:300}
@@ -57,12 +59,12 @@ section{position:relative;padding:clamp(100px,14vw,170px) var(--pad)}
 .btn:hover{color:var(--ivory)}
 .btn:hover::before{transform:none}
 .tlink{font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid var(--gold);padding-bottom:4px;transition:color .4s,letter-spacing .5s var(--ease)}
-.tlink:hover{color:var(--rose);letter-spacing:.26em}
+.tlink:hover{color:var(--rose-ink);letter-spacing:.26em}
 
 /* ---------- HERO ---------- */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:20px;padding-top:120px;padding-bottom:80px;max-width:1340px;margin:0 auto}
 .eyebrow{display:flex;align-items:center;gap:14px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--choc-2);margin-bottom:30px}
-.eyebrow b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:19px;color:var(--gold);letter-spacing:0}
+.eyebrow b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:19px;color:var(--gold-ink);letter-spacing:0}
 .eyebrow::after{content:"";height:1px;width:60px;background:var(--gold);opacity:.7}
 .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(66px,9.6vw,156px);line-height:.88;letter-spacing:-.02em;margin-bottom:34px}
 .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
@@ -72,7 +74,7 @@ section{position:relative;padding:clamp(100px,14vw,170px) var(--pad)}
 .tag{font-family:var(--serif);font-size:clamp(22px,2.3vw,30px);line-height:1.35;color:var(--choc-2);margin-bottom:26px}
 .tag em{color:var(--rose)}
 .meta{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:44px}
-.meta b{color:var(--gold);font-weight:400;margin:0 6px}
+.meta b{color:var(--gold-ink);font-weight:400;margin:0 6px}
 .hero-cta{display:flex;align-items:center;gap:34px;flex-wrap:wrap}
 .fadein{opacity:0;animation:fade 1.4s var(--ease) forwards}
 @keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
@@ -102,7 +104,7 @@ section{position:relative;padding:clamp(100px,14vw,170px) var(--pad)}
 .about-text p.body{color:var(--choc-2);max-width:56ch;margin-bottom:20px}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px;border-top:1px solid rgba(59,42,34,.15)}
 .facts div{padding:22px 18px 0 0}
-.facts dt{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.facts dt{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:8px}
 .facts dd{font-family:var(--serif);font-size:20px;line-height:1.3}
 
 /* ---------- MIND / TRUNK ---------- */
@@ -112,7 +114,7 @@ section{position:relative;padding:clamp(100px,14vw,170px) var(--pad)}
 .mind-list li{position:relative;display:grid;grid-template-columns:90px 1.2fr 1fr 40px;align-items:center;gap:20px;padding:30px 10px;border-bottom:1px solid rgba(59,42,34,.18);cursor:default;isolation:isolate}
 .mind-list li::before{content:"";position:absolute;inset:0;background:var(--blush-2);transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--ease);z-index:-1}
 .mind-list li:hover::before{transform:scaleY(1)}
-.mind-list .i{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--gold)}
+.mind-list .i{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--gold-ink)}
 .mind-list h3{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.4vw,46px);line-height:1.05;transition:transform .6s var(--ease)}
 .mind-list li:hover h3{transform:translateX(14px);font-style:italic}
 .mind-list p{color:var(--choc-2);font-size:14px;max-width:40ch;opacity:.75;transition:opacity .5s}
@@ -133,9 +135,9 @@ section{position:relative;padding:clamp(100px,14vw,170px) var(--pad)}
 .pv .frame{position:absolute;inset:18px;border:1px solid rgba(255,255,255,.6)}
 .pv .ph-note{position:absolute;left:28px;bottom:24px;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--choc-2)}
 .pi .row{display:flex;align-items:center;gap:16px;margin-bottom:18px;flex-wrap:wrap}
-.pi .no{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--gold)}
+.pi .no{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--gold-ink)}
 .status{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;padding:6px 13px;border-radius:100px;border:1px solid rgba(59,42,34,.2);color:var(--choc-2)}
-.status.bloom{background:var(--blush-2);border-color:var(--blush);color:var(--rose)}
+.status.bloom{background:var(--blush-2);border-color:var(--blush);color:var(--rose-ink)}
 .status.bloom::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--rose);margin-right:8px;vertical-align:middle}
 .pi h3{font-family:var(--serif);font-weight:300;font-size:clamp(44px,5.4vw,76px);line-height:1;margin-bottom:12px}
 .pi .cat{margin-bottom:26px}
@@ -149,7 +151,7 @@ section{position:relative;padding:clamp(100px,14vw,170px) var(--pad)}
 .steps ol{list-style:none;margin-top:30px;border-left:1px solid var(--blush);padding-left:22px}
 .steps li{position:relative;padding:8px 0 14px}
 .steps li::before{content:"";position:absolute;left:-26px;top:16px;width:7px;height:7px;border-radius:50%;background:var(--blush);border:1px solid var(--rose)}
-.steps b{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.steps b{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);font-weight:500}
 .steps span{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--muted)}
 
 /* ---------- BEYOND / LEAVES ---------- */
@@ -195,10 +197,10 @@ section{position:relative;padding:clamp(100px,14vw,170px) var(--pad)}
 .node h5{font-family:var(--serif);font-weight:400;font-size:clamp(20px,2.2vw,28px);line-height:1.1}
 .node.next h5{font-style:italic;color:var(--choc-2)}
 .node small{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.node.now small{color:var(--rose)}
+.node.now small{color:var(--rose-ink)}
 .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,60px);max-width:1080px;margin:0 auto;text-align:left}
 .cols div{border-top:1px solid rgba(59,42,34,.2);padding-top:24px}
-.cols b{display:block;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:12px}
+.cols b{display:block;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink);font-weight:500;margin-bottom:12px}
 .cols p{font-family:var(--serif);font-size:21px;line-height:1.4}
 
 /* ---------- CONNECT / PETALS ---------- */
@@ -208,13 +210,13 @@ section{position:relative;padding:clamp(100px,14vw,170px) var(--pad)}
 .connect .sub{color:var(--choc-2);max-width:46ch;margin:0 auto 56px}
 .mail{display:inline-flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;margin-bottom:46px}
 .mail a{font-family:var(--serif);font-style:italic;font-size:clamp(26px,3.4vw,44px);border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .4s}
-.mail a:hover{color:var(--rose)}
+.mail a:hover{color:var(--rose-ink)}
 .copy{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;padding:9px 16px;border:1px solid rgba(59,42,34,.25);border-radius:100px;transition:all .4s}
 .copy:hover{background:var(--choc);color:var(--ivory)}
 .socials{display:flex;justify-content:center;gap:clamp(20px,5vw,60px);flex-wrap:wrap;margin-bottom:140px}
 .socials a{font-size:11px;letter-spacing:.22em;text-transform:uppercase;display:flex;align-items:center;gap:10px;transition:color .4s}
 .socials a span{display:inline-block;transition:transform .5s var(--ease)}
-.socials a:hover{color:var(--rose)}
+.socials a:hover{color:var(--rose-ink)}
 .socials a:hover span{transform:translate(3px,-3px)}
 footer{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(59,42,34,.14);padding-top:30px;max-width:1180px;margin:0 auto;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 footer .sig{font-family:var(--serif);font-style:italic;text-transform:none;letter-spacing:0;font-size:22px;color:var(--choc)}
@@ -265,4 +267,61 @@ footer .sig{font-family:var(--serif);font-style:italic;text-transform:none;lette
 
 .connect .school{margin:-24px 0 46px}
 .connect .school a{border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .4s}
-.connect .school a:hover{color:var(--rose)}
+.connect .school a:hover{color:var(--rose-ink)}
+
+
+/* ---------- TYPOGRAPHY: a more technical pairing ----------
+   Inter Tight for headings, Inter for text, JetBrains Mono for labels and numbers.
+   Cormorant Garamond survives only as an italic accent (emphasised words, the surname, quotes). */
+body{font-weight:400}
+.mono{font-family:var(--display);font-size:14px;letter-spacing:.14em;font-weight:500}
+.mono i{font-family:var(--serif);font-style:italic}
+.nav ul a,.sh,.small-caps,.meta,.eyebrow,.status,.stack,.rail li,.tlink,.btn,.story-btn,.scroll-cue,.facts dt,.steps b,.cols b,.node small,.copy,.toast,.pi .no,.mind-list .i,.skip,footer,.tag-s,.tile .small-caps,.connect .school{font-family:var(--mono);font-weight:400;letter-spacing:.1em}
+.nav ul a{font-size:11px}
+.sh{font-size:11px}
+.small-caps,.meta,.eyebrow,.status,.tlink,.story-btn,.scroll-cue,.node small,.copy{font-size:10.5px}
+.stack{font-size:11px;letter-spacing:.04em;text-transform:none;line-height:1.8}
+.pi .no,.mind-list .i{font-style:normal;font-size:13px}
+.sh b,.eyebrow b{font-family:var(--mono);font-style:normal;font-size:13px;letter-spacing:.06em}
+.meta b{font-family:var(--mono)}
+.h2,.hero h1,.big-quote,.mind-list h3,.pi h3,.tile h4,.node h5,.facts dd,.cols p,.tag,.lead,.pi .desc,.mail a,footer .sig{font-family:var(--display)}
+.hero h1{font-weight:300;font-size:clamp(54px,7.6vw,124px);line-height:.94;letter-spacing:-.035em}
+.hero h1 .ln:nth-child(2)>span{font-family:var(--serif);font-weight:300;font-style:italic;letter-spacing:-.02em;padding-left:.35em;font-size:1.08em;line-height:.9}
+.h2{font-weight:300;font-size:clamp(36px,4.8vw,68px);line-height:1.04;letter-spacing:-.03em;max-width:18ch}
+.h2 em,.tag em,.big-quote em,.lead em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.tag{font-weight:300;font-size:clamp(20px,2vw,26px);letter-spacing:-.015em}
+.lead{font-weight:300;font-size:clamp(19px,1.8vw,24px);letter-spacing:-.01em;line-height:1.5}
+.big-quote{font-weight:300;font-size:clamp(34px,5vw,74px);line-height:1.06;letter-spacing:-.035em;max-width:18ch}
+.mind-list h3{font-weight:300;font-size:clamp(24px,2.8vw,38px);letter-spacing:-.025em}
+.mind-list li:hover h3{font-style:normal;transform:translateX(14px)}
+.pi h3{font-weight:300;font-size:clamp(36px,4.4vw,60px);letter-spacing:-.035em}
+.pi .desc{font-weight:300;font-size:clamp(17px,1.5vw,20px);line-height:1.55;letter-spacing:-.005em;max-width:38ch}
+.steps span{font-family:var(--sans);font-style:normal;font-size:15px;line-height:1.65;color:var(--choc-2)}
+.steps b{font-weight:500}
+.tile h4{font-weight:400;font-size:26px;letter-spacing:-.02em}
+.t2 blockquote{font-family:var(--serif)}
+.node h5{font-weight:400;letter-spacing:-.02em}
+.node.next h5{font-style:normal}
+.facts dd{font-size:18px;letter-spacing:-.01em}
+.cols p{font-size:18px;line-height:1.5;font-weight:300}
+.connect .h2{font-size:clamp(40px,6.2vw,92px);max-width:16ch}
+.mail a{font-style:normal;font-weight:300;font-size:clamp(22px,3vw,38px);letter-spacing:-.02em}
+footer .sig{font-size:20px;font-style:normal;letter-spacing:-.01em}
+.rail li{font-size:10px}
+.nav ul{gap:28px}
+
+/* ---------- PROJECT METRICS AND "MORE WORK" ---------- */
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:0 0 22px;padding-top:20px;border-top:1px solid rgba(59,42,34,.14);max-width:46ch}
+.metrics dt{font-family:var(--mono);font-size:clamp(20px,2vw,26px);font-weight:500;letter-spacing:-.02em;color:var(--choc);line-height:1.1;margin-bottom:6px}
+.metrics dd{font-size:12.5px;line-height:1.45;color:var(--muted)}
+.more{margin-top:50px;border-top:1px solid rgba(59,42,34,.14);padding-top:40px}
+.more-title{margin-bottom:10px}
+.more-row{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,80px);padding:36px 0;border-bottom:1px solid rgba(59,42,34,.14)}
+.more-row .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.more-row h3{font-family:var(--display);font-weight:300;font-size:clamp(28px,3vw,40px);letter-spacing:-.03em;line-height:1.05}
+.more-row .cat{margin-bottom:14px}
+.more-row .desc{font-family:var(--display);font-weight:300;font-size:17px;line-height:1.55;margin-bottom:14px;max-width:44ch}
+.more-row .stack{margin-bottom:0}
+.more-row.open .story-btn .pl{transform:rotate(45deg)}
+.more-row.open .steps{grid-template-rows:1fr}
+@media (max-width:960px){.more-row{grid-template-columns:1fr}}

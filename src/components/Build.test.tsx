@@ -33,9 +33,12 @@ function mount() {
 describe('Build section', () => {
   it('lists every project with its status and story', () => {
     const el = mount();
-    expect(el.querySelectorAll('article.proj')).toHaveLength(projects.length);
+    expect(el.querySelectorAll('article.proj')).toHaveLength(projects.filter((p) => p.featured).length);
+    expect(el.querySelectorAll('article.more-row')).toHaveLength(projects.filter((p) => !p.featured).length);
+    expect(el.querySelectorAll('.metrics dt')).toHaveLength(projects.reduce((sum, p) => sum + p.metrics.length, 0));
     expect(el.querySelectorAll('.steps li')).toHaveLength(projects.length * 5);
     expect(el.textContent).toContain('In bloom · in development');
+    expect(el.textContent).toContain('35 / 35');
   });
 
   it('opens and closes a story, and says so to assistive technology', () => {

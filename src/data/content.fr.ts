@@ -57,9 +57,6 @@ export const projectsFr: Record<string, ProjectFr> = {
       gallery: [
         { alt: 'Mnemo demandant une approbation avant d’effacer un souvenir : un bandeau avec les boutons Autoriser et Refuser au-dessus de la conversation', caption: 'Une action sensible m’attend. Le modèle dit que c’est fait ; le serveur n’a encore rien fait.' },
         { alt: 'L’écran de mémoire de Mnemo listant ce qu’il sait de l’utilisateur, chaque élément avec des boutons Modifier et Oublier', caption: 'L’écran de mémoire : ce que Mnemo sait de moi, chaque élément modifiable ou oubliable.' },
-        { alt: 'Les étapes d’une réponse de Mnemo : une suppression de souvenir refusée par le serveur car le modèle a envoyé un argument que l’outil n’accepte pas', caption: 'Une étape refusée par le serveur : le petit modèle a envoyé un argument que l’outil n’accepte pas.' },
-        { alt: 'Le journal des actions de Mnemo : une suppression de souvenir, refusée par le serveur, avec sa raison', caption: 'Le journal des actions : ce qui a été demandé, et ce que le serveur en a fait.' },
-        { alt: 'L’écran des documents de Mnemo listant deux fichiers importés avec leur taille et leur nombre de passages', caption: 'Les documents sur lesquels Mnemo s’appuie. Ils restent sur ma machine et ne sont visibles que de moi.' },
       ],
       codeCaption: 'Le serveur décide : un outil inconnu est refusé, et un outil sensible attend l’utilisateur.',
       terminalCaption: 'L’étape de CI : AegisAI scanne Mnemo, et le build échoue si une garantie du serveur est brisée.',

@@ -15,7 +15,7 @@ export interface Strings {
   hero: { eyebrow: string; tagA: string; tagB: string; tagEm: string; meta: [string, string, string]; discover: string; connect: string; treeLabel: string; treeCaption: string; scroll: string };
   about: { portraitAlt: string; portrait: string; head: string; h2a: string; h2em: string; h2z: string; lead: string; body1: string; body2: string };
   mind: { head: string; h2a: string; h2em: string; h2z: string; intro: string };
-  build: { slideOverview: string; slideStory: string; slideCode: string; scrollHint: string; head: string; h2a: string; h2em: string; h2b: string; intro: string; more: string; readStory: string; closeStory: string };
+  build: { slideOverview: string; slideStory: string; slideCode: string; slidePictures: string; scrollHint: string; head: string; h2a: string; h2em: string; h2b: string; intro: string; more: string; readStory: string; closeStory: string };
   beyond: {
     head: string; h2a: string; h2em: string; intro: string;
     t1: [string, string, string]; quote: string; t3: [string, string, string];
@@ -72,6 +72,7 @@ const en: Strings = {
     slideOverview: 'Overview',
     slideStory: 'The story',
     slideCode: 'Under the hood',
+    slidePictures: 'In pictures',
     scrollHint: 'Keep scrolling',
     readStory: 'Read the story ',
     closeStory: 'Close the story ',
@@ -149,6 +150,7 @@ const fr: Strings = {
     slideOverview: 'Aperçu',
     slideStory: 'L’histoire',
     slideCode: 'Sous le capot',
+    slidePictures: 'En images',
     scrollHint: 'Continuez à défiler',
     readStory: 'Lire l’histoire ',
     closeStory: 'Fermer l’histoire ',

@@ -64,7 +64,11 @@ def replay(connector, module, payload, attempts) -> ReplayResult:
   },
   Mnemo: {
     gallery: [
+      { src: 'assets/img/mnemo-approval.png', alt: 'Mnemo asking for approval before erasing a memory: a banner with the Allow and Refuse buttons above the conversation', caption: 'A sensitive action waits for me. The model says it is done; the server has not done anything yet.' },
       { src: 'assets/img/mnemo-memory.png', alt: 'Mnemo’s memory screen listing what it knows about the user, each item with Edit and Forget buttons', caption: 'The memory screen: what Mnemo knows about me, each item editable or forgotten.' },
+      { src: 'assets/img/mnemo-refused.png', alt: 'The steps of an answer in Mnemo: a memory deletion refused by the server because the model sent an argument the tool does not accept', caption: 'A step refused by the server: the small model sent an argument the tool does not accept.' },
+      { src: 'assets/img/mnemo-journal.png', alt: 'The action journal of Mnemo: one memory deletion, refused by the server, with its reason', caption: 'The action journal: what was asked, and what the server did with it.' },
+      { src: 'assets/img/mnemo-documents.png', alt: 'The documents screen of Mnemo listing two uploaded files with their size and number of passages', caption: 'The documents Mnemo answers from. They stay on my machine and are visible only to me.' },
     ],
     code: {
       file: 'backend/src/tools/runtime.ts',

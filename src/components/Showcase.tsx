@@ -3,8 +3,15 @@ import type { Project } from '../data/content';
 import { useLang } from '../i18n';
 import { Links, Metrics } from './ProjectParts';
 
-type Kind = 'overview' | 'story' | 'code';
-const kinds: Kind[] = ['overview', 'story', 'code'];
+type Kind = 'overview' | 'story' | 'pictures' | 'code';
+
+/** The story slide shows the first two pictures; any more get a slide of their own. */
+const STORY_PICTURES = 2;
+
+function slidesOf(project: Project): Kind[] {
+  const extra = (project.sample?.gallery.length ?? 0) > STORY_PICTURES;
+  return extra ? ['overview', 'story', 'pictures', 'code'] : ['overview', 'story', 'code'];
+}
 
 function Overview({ project }: { project: Project }) {
   return (
@@ -29,7 +36,7 @@ function Overview({ project }: { project: Project }) {
 }
 
 function StorySlide({ project }: { project: Project }) {
-  const gallery = project.sample?.gallery ?? [];
+  const gallery = (project.sample?.gallery ?? []).slice(0, STORY_PICTURES);
   return (
     <div className="sc-grid sc-story">
       <ol className="sc-steps">
@@ -51,6 +58,20 @@ function StorySlide({ project }: { project: Project }) {
           </figure>
         ))}
       </div>
+    </div>
+  );
+}
+
+function PicturesSlide({ project }: { project: Project }) {
+  const gallery = (project.sample?.gallery ?? []).slice(STORY_PICTURES);
+  return (
+    <div className={`sc-wall n${gallery.length}`}>
+      {gallery.map((figure) => (
+        <figure key={figure.src}>
+          <img src={figure.src} alt={figure.alt} decoding="async" />
+          <figcaption>{figure.caption}</figcaption>
+        </figure>
+      ))}
     </div>
   );
 }
@@ -84,7 +105,8 @@ export function Showcase({ projects }: { projects: Project[] }) {
   const { t } = useLang();
   const outer = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const count = projects.length * kinds.length;
+  const slides = projects.flatMap((project) => slidesOf(project).map((kind) => ({ project, kind })));
+  const count = slides.length;
 
   useEffect(() => {
     let frame = 0;
@@ -112,9 +134,9 @@ export function Showcase({ projects }: { projects: Project[] }) {
     };
   }, [count]);
 
-  const labels: Record<Kind, string> = { overview: t.build.slideOverview, story: t.build.slideStory, code: t.build.slideCode };
-  const current = projects[Math.floor(active / kinds.length)];
-  const currentKind = kinds[active % kinds.length]!;
+  const labels: Record<Kind, string> = { overview: t.build.slideOverview, story: t.build.slideStory, pictures: t.build.slidePictures, code: t.build.slideCode };
+  const current = slides[active]?.project;
+  const currentKind = slides[active]?.kind ?? 'overview';
 
   return (
     <div
@@ -129,13 +151,11 @@ export function Showcase({ projects }: { projects: Project[] }) {
           <span>{labels[currentKind]}</span>
         </div>
         <div className="sc-track">
-          {projects.flatMap((project) =>
-            kinds.map((kind) => (
-              <section key={`${project.title}-${kind}`} className="sc-panel" aria-label={`${project.title}, ${labels[kind]}`}>
-                {kind === 'overview' ? <Overview project={project} /> : kind === 'story' ? <StorySlide project={project} /> : <CodeSlide project={project} />}
-              </section>
-            )),
-          )}
+          {slides.map(({ project, kind }) => (
+            <section key={`${project.title}-${kind}`} className="sc-panel" aria-label={`${project.title}, ${labels[kind]}`}>
+              {kind === 'overview' ? <Overview project={project} /> : kind === 'story' ? <StorySlide project={project} /> : kind === 'pictures' ? <PicturesSlide project={project} /> : <CodeSlide project={project} />}
+            </section>
+          ))}
         </div>
         <div className="sc-progress" aria-hidden="true">
           <i></i>

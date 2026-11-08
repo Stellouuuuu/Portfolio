@@ -404,3 +404,12 @@ footer .sig{font-size:20px;font-style:normal;letter-spacing:-.01em}
 .sc-code{grid-template-columns:1.4fr 1fr}
 @media (max-width:960px){.sc-gallery.n2 img{max-height:none}}
 @media (max-width:960px),(prefers-reduced-motion:reduce){.sc-code{grid-template-columns:1fr}.sc-gallery.n2 img{max-height:none}}
+
+/* Extra pictures of a project, side by side */
+.sc-wall{width:100%;max-width:1180px;margin:0 auto;display:grid;gap:clamp(16px,2.4vw,30px);grid-template-columns:repeat(3,1fr);align-items:start}
+.sc-wall.n2{grid-template-columns:repeat(2,1fr)}
+.sc-wall.n1{grid-template-columns:minmax(0,760px);justify-content:center}
+.sc-wall figure{margin:0;min-width:0}
+.sc-wall img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top left;border-radius:6px;box-shadow:0 18px 44px rgba(59,42,34,.22);background:var(--beige)}
+.sc-wall figcaption{margin-top:12px;font-size:13px;line-height:1.5;color:var(--muted)}
+@media (max-width:960px),(prefers-reduced-motion:reduce){.sc-wall,.sc-wall.n2{grid-template-columns:1fr}}

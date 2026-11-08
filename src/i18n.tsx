@@ -223,8 +223,11 @@ export function localizeProject(project: Project, lang: Lang): Project {
         ? {
             ...project.sample,
             gallery: project.sample.gallery.map((figure, index) => ({ ...figure, ...text.sample!.gallery[index] })),
-            code: { ...project.sample.code, caption: text.sample.codeCaption },
-            terminal: { ...project.sample.terminal, caption: text.sample.terminalCaption },
+            code: project.sample.code && { ...project.sample.code, caption: text.sample.codeCaption ?? project.sample.code.caption },
+            terminal: project.sample.terminal && {
+              ...project.sample.terminal,
+              caption: text.sample.terminalCaption ?? project.sample.terminal.caption,
+            },
           }
         : project.sample,
   };

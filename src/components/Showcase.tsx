@@ -9,8 +9,14 @@ type Kind = 'overview' | 'story' | 'pictures' | 'code';
 const STORY_PICTURES = 2;
 
 function slidesOf(project: Project): Kind[] {
-  const extra = (project.sample?.gallery.length ?? 0) > STORY_PICTURES;
-  return extra ? ['overview', 'story', 'pictures', 'code'] : ['overview', 'story', 'code'];
+  const slides: Kind[] = ['overview', 'story'];
+  if ((project.sample?.gallery.length ?? 0) > STORY_PICTURES) {
+    slides.push('pictures');
+  }
+  if (project.sample?.code || project.sample?.terminal) {
+    slides.push('code');
+  }
+  return slides;
 }
 
 function Overview({ project }: { project: Project }) {
@@ -78,7 +84,7 @@ function PicturesSlide({ project }: { project: Project }) {
 
 function CodeSlide({ project }: { project: Project }) {
   const sample = project.sample;
-  if (!sample) {
+  if (!sample?.code || !sample.terminal) {
     return null;
   }
   return (

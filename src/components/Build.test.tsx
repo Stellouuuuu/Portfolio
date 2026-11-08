@@ -34,13 +34,16 @@ describe('Build section', () => {
   it('lists every project with its status and story', () => {
     const el = mount();
     const featured = projects.filter((p) => p.featured);
-    expect(el.querySelectorAll('.sc-panel')).toHaveLength(featured.length * 3 + featured.filter((p) => (p.sample?.gallery.length ?? 0) > 2).length);
+    const withCode = featured.filter((p) => p.sample?.code);
+    expect(el.querySelectorAll('.sc-panel')).toHaveLength(
+      featured.length * 2 + withCode.length + featured.filter((p) => (p.sample?.gallery.length ?? 0) > 2).length,
+    );
     expect(el.querySelectorAll('article.more-row')).toHaveLength(projects.filter((p) => !p.featured).length);
     expect(el.querySelectorAll('.metrics dt')).toHaveLength(projects.reduce((sum, p) => sum + p.metrics.length, 0));
     expect(el.querySelectorAll('.sc-steps li')).toHaveLength(featured.length * 5);
     expect(el.querySelectorAll('.steps li')).toHaveLength((projects.length - featured.length) * 5);
-    expect(el.querySelectorAll('.sc-card.code')).toHaveLength(featured.length);
-    expect(el.querySelectorAll('.sc-card.term')).toHaveLength(featured.length);
+    expect(el.querySelectorAll('.sc-card.code')).toHaveLength(withCode.length);
+    expect(el.querySelectorAll('.sc-card.term')).toHaveLength(withCode.length);
     expect(el.textContent).toContain('In bloom · in development');
     expect(el.textContent).toContain('35 / 35');
   });

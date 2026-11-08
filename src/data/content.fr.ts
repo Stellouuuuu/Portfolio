@@ -9,7 +9,7 @@ export interface ProjectFr {
   story: ProjectStory[];
   links: string[];
   alt?: string;
-  sample?: { gallery: { alt: string; caption: string }[]; codeCaption: string; terminalCaption: string };
+  sample?: { gallery: { alt: string; caption: string }[]; codeCaption?: string; terminalCaption?: string };
 }
 
 export const projectsFr: Record<string, ProjectFr> = {
@@ -34,8 +34,6 @@ export const projectsFr: Record<string, ProjectFr> = {
         { alt: 'Une faille dans AegisAI : l’attaque envoyée, la réponse qui a divulgué un secret planté, la règle violée et comment corriger', caption: 'Chaque faille montre l’attaque envoyée, la réponse, la règle violée et la correction.' },
         { alt: 'La vue d’ensemble d’AegisAI : un labo vulnérable à 0 et sa variante corrigée à 100', caption: 'Un labo vulnérable obtient 0, sa variante corrigée obtient 100.' },
       ],
-      codeCaption: 'Une détection ne compte que si elle tient au rejeu, et pas si une réponse normale la déclenche déjà.',
-      terminalCaption: 'Le scan du chatbot vulnérable fourni, tel qu’affiché.',
     },
     links: ['Démo en ligne', 'Code source sur GitHub'],
   },

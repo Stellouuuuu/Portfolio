@@ -39,30 +39,6 @@ export const samples: Record<string, Sample> = {
   'Gestion de boutique': {
     gallery: [
       { src: 'assets/img/boutique-steps.png', alt: 'The product list of the app in a phone frame: oil, rice, soap, milk and sugar with their stock and price', caption: 'The product list, with stock and price at a glance.' },
-      { src: 'assets/img/boutique-features.png', alt: 'The features section of the presentation site: stock management and fast checkout', caption: 'Stock management and a fast checkout.' },
     ],
-    code: {
-      file: 'src/db/alertesStock.ts',
-      caption: 'The low-stock list: one query, most urgent first, and it changes nothing.',
-      code: `export async function listerAlertesStock(
-  db: AlertesDb,
-  boutiqueId: string,
-  seuil: number
-): Promise<ArticleAlerte[]> {
-  return db.getAllAsync<ArticleAlerte>(
-    \`SELECT id, nom, stock FROM (
-       SELECT a.id AS id, a.nom AS nom, \${stockExpr('a.id')} AS stock
-       FROM articles a
-       WHERE a.boutique_id = ? AND a.actif = 1 AND COALESCE(a.suivi_stock, 1) = 1
-     ) WHERE stock <= ? ORDER BY stock ASC, nom COLLATE NOCASE ASC\`,
-    [boutiqueId, bornerSeuil(seuil)]
-  );
-}`,
-    },
-    terminal: {
-      command: 'npm test',
-      caption: 'The test suite of the app, run on my machine.',
-      output: ['1..88', '# tests 303', '# suites 88', '# pass 303', '# fail 0', '# cancelled 0', '# skipped 0', '# duration_ms 1008.98'],
-    },
   },
 };

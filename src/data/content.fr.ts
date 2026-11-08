@@ -131,10 +131,7 @@ export const projectsFr: Record<string, ProjectFr> = {
     sample: {
       gallery: [
         { alt: 'La liste des produits de l’application dans un cadre de téléphone : huile, riz, savon, lait et sucre avec leur stock et leur prix', caption: 'La liste des produits, avec stock et prix en un coup d’œil.' },
-        { alt: 'La section fonctionnalités du site de présentation : gestion du stock et caisse rapide', caption: 'Gestion du stock et caisse rapide.' },
       ],
-      codeCaption: 'La liste des alertes de stock : une seule requête, les plus urgents d’abord, sans rien modifier.',
-      terminalCaption: 'La suite de tests de l’application, lancée sur ma machine.',
     },
     links: ['Ouvrir l’application'],
   },

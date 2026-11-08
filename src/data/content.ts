@@ -57,7 +57,10 @@ export const projects: Project[] = [
       { label: 'The lesson', text: 'Measure before saying it works, keep a control, and write the limits next to the numbers.' },
     ],
     sample: samples['AegisAI'],
-    links: [{ label: 'Source on GitHub', url: 'https://github.com/Stellouuuuu/aegisai' }],
+    links: [
+      { label: 'Live demo', url: 'https://frontend-gules-omega-jfkd1wvsaa.vercel.app' },
+      { label: 'Source on GitHub', url: 'https://github.com/Stellouuuuu/aegisai' },
+    ],
   },
   {
     no: '02',

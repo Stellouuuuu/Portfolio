@@ -37,7 +37,7 @@ export const projectsFr: Record<string, ProjectFr> = {
       codeCaption: 'Une détection ne compte que si elle tient au rejeu, et pas si une réponse normale la déclenche déjà.',
       terminalCaption: 'Le scan du chatbot vulnérable fourni, tel qu’affiché.',
     },
-    links: ['Code source sur GitHub'],
+    links: ['Démo en ligne', 'Code source sur GitHub'],
   },
   Mnemo: {
     category: 'Intelligence artificielle · Assistant local',

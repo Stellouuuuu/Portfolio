@@ -413,3 +413,42 @@ footer .sig{font-size:20px;font-style:normal;letter-spacing:-.01em}
 .sc-wall img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top left;border-radius:6px;box-shadow:0 18px 44px rgba(59,42,34,.22);background:var(--beige)}
 .sc-wall figcaption{margin-top:12px;font-size:13px;line-height:1.5;color:var(--muted)}
 @media (max-width:960px),(prefers-reduced-motion:reduce){.sc-wall,.sc-wall.n2{grid-template-columns:1fr}}
+
+/* Navigation: tools on the right, and a dropdown menu on narrow screens */
+.nav-tools{display:flex;align-items:center;gap:12px;margin-left:28px}
+.nav .burger{display:none;width:40px;height:40px;border:1px solid rgba(59,42,34,.28);border-radius:50%;position:relative;color:var(--choc);background:none}
+.nav .burger span{position:absolute;left:12px;right:12px;height:1px;background:currentColor;transition:transform .35s var(--ease),top .35s var(--ease)}
+.nav .burger span:nth-child(1){top:16px}
+.nav .burger span:nth-child(2){top:23px}
+.nav.menu-open .burger span:nth-child(1){top:19.5px;transform:rotate(45deg)}
+.nav.menu-open .burger span:nth-child(2){top:19.5px;transform:rotate(-45deg)}
+@media (max-width:960px){
+  .nav{flex-wrap:nowrap}
+  .nav-tools{margin-left:auto}
+  .nav .burger{display:block}
+  .nav ul{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:10px var(--pad) 22px;background:rgba(248,243,236,.98);border-bottom:1px solid rgba(59,42,34,.12);box-shadow:0 24px 40px rgba(59,42,34,.1)}
+  .nav.menu-open ul{display:flex}
+  .nav ul a{display:block;padding:15px 0;font-size:12px;border-bottom:1px solid rgba(59,42,34,.08)}
+  .nav ul li:last-child a{border-bottom:0}
+  .nav ul a::after{display:none}
+  .nav ul a.active{color:var(--rose-ink)}
+  .tlink,.story-btn,.socials a,.copy{padding-top:10px;padding-bottom:10px}
+}
+
+/* "On my desk" tile: a photo behind the list */
+.t4{isolation:isolate}
+.t4 .tile-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:28% 62%;z-index:-2}
+.t4::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(36,25,20,.94) 0%,rgba(36,25,20,.78) 40%,rgba(36,25,20,.2) 78%,rgba(36,25,20,.05) 100%)}
+@media (max-width:360px){
+  .nav{padding-left:16px;padding-right:16px;gap:8px}
+  .nav-tools{gap:8px}
+  .nav .lang{padding:6px 8px;letter-spacing:.08em}
+  .nav a.mono{letter-spacing:.06em;font-size:12px}
+}
+
+/* "Starting things" tile: a photo in the arch */
+.t1{isolation:isolate}
+.t1 .tile-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;z-index:-2}
+.t1::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(36,25,20,.7) 0%,rgba(36,25,20,0) 24%),linear-gradient(to top,rgba(36,25,20,.9) 0%,rgba(36,25,20,.6) 34%,rgba(36,25,20,.1) 70%,rgba(36,25,20,0) 100%)}
+.t1 h4{color:var(--ivory)}
+.t1 p,.t1 .tag-s{color:#E8DCCF}

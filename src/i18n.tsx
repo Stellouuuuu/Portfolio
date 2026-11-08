@@ -10,6 +10,8 @@ export interface Strings {
   skip: string;
   home: string;
   switchTo: string;
+  menuOpen: string;
+  menuClose: string;
   nav: Record<'about' | 'mind' | 'build' | 'beyond' | 'future' | 'connect', string>;
   rail: Record<SectionId, string>;
   hero: { eyebrow: string; tagA: string; tagB: string; tagEm: string; meta: [string, string, string]; discover: string; connect: string; treeLabel: string; treeCaption: string; scroll: string };
@@ -30,6 +32,8 @@ const en: Strings = {
   skip: 'Skip to content',
   home: 'Stella Gbaguidi, back to the top',
   switchTo: 'Passer en français',
+  menuOpen: 'Open the menu',
+  menuClose: 'Close the menu',
   nav: { about: 'About', mind: 'Mind', build: 'Work', beyond: 'Beyond', future: 'Future', connect: 'Contact' },
   rail: railLabels,
   hero: {
@@ -108,6 +112,8 @@ const fr: Strings = {
   skip: 'Aller au contenu',
   home: 'Stella Gbaguidi, retour en haut de page',
   switchTo: 'Switch to English',
+  menuOpen: 'Ouvrir le menu',
+  menuClose: 'Fermer le menu',
   nav: { about: 'À propos', mind: 'Esprit', build: 'Projets', beyond: 'Au-delà', future: 'Avenir', connect: 'Contact' },
   rail: { hero: 'Graine', about: 'Racines', mind: 'Tronc', build: 'Branches', beyond: 'Feuilles', future: 'Floraison', connect: 'Pétales' },
   hero: {

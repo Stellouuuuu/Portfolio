@@ -124,7 +124,10 @@ export const projects: Project[] = [
       { label: 'The challenge', text: 'Handling secrets properly: passwords are hashed with bcrypt, one-time codes and refresh tokens are stored only as hashes, OAuth tokens are encrypted, and signing keys are generated on first start.' },
       { label: 'The lesson', text: 'We prepared the defence by checking every claim against the code, with the file and line next to it. That habit is the one I kept.' },
     ],
-    links: [{ label: 'Source on GitHub', url: 'https://github.com/Stellouuuuu/Dashboard' }],
+    links: [
+      { label: 'Open the app', url: 'https://threshold-frontend-t7yu.onrender.com/' },
+      { label: 'Source on GitHub', url: 'https://github.com/Stellouuuuu/Dashboard' },
+    ],
   },
   {
     featured: false,
